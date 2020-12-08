@@ -1,21 +1,28 @@
 package ru.list.surkovr.leetcode.easy;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Part1 {
 
-    private static final Logger log = Logger.getLogger(Part1.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Part1.class.getName());
 
     public static void main(String[] args) {
-        log.log(Level.INFO, "In getTwoSum found: "
+        LOGGER.log(Level.INFO, "In getTwoSum found: "
                 + Arrays.toString(getTwoSum(new int[]{3, 2, 4}, 6)));
-        log.log(Level.INFO, "In longestCommonPrefix found: "
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In longestCommonPrefix found: "
                 + longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
-        log.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1,1,2}));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1,1,2}));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In romanToInt found: " + romanToInt("MCMXCIV"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In romanToInt2 found: " + romanToInt2("MCMXCIV"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In isValid found: " + isValid("([)]"));
+        LOGGER.log(Level.INFO, "--------------------------------");
     }
 
     /**
@@ -160,5 +167,171 @@ public class Part1 {
             }
         }
         return newArrayPointer + 1;
+    }
+
+    /**
+     * Roman to Integer
+     * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+     *
+     * Symbol       Value
+     * I             1
+     * V             5
+     * X             10
+     * L             50
+     * C             100
+     * D             500
+     * M             1000
+     * For example, 2 is written as II in Roman numeral, just two one's added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+     *
+     * Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+     *
+     * I can be placed before V (5) and X (10) to make 4 and 9.
+     * X can be placed before L (50) and C (100) to make 40 and 90.
+     * C can be placed before D (500) and M (1000) to make 400 and 900.
+     * Given a roman numeral, convert it to an integer.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: s = "III"
+     * Output: 3
+     * Example 2:
+     *
+     * Input: s = "IV"
+     * Output: 4
+     * Example 3:
+     *
+     * Input: s = "IX"
+     * Output: 9
+     * Example 4:
+     *
+     * Input: s = "LVIII"
+     * Output: 58
+     * Explanation: L = 50, V= 5, III = 3.
+     * Example 5:
+     *
+     * Input: s = "MCMXCIV"
+     * Output: 1994
+     * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= s.length <= 15
+     * s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
+     * It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+     */
+    private static int romanToInt(String s) {
+        if (s == null || s.equals("")) {
+            return 0;
+        }
+        int res = 0;
+        Map<Character, Integer> codeMap = createRomanToIntCodeMap();
+        Integer previous = null;
+        for (int i = 0; i < s.length(); i++) {
+            Integer current = codeMap.get(s.charAt(i));
+            if (previous != null && current > previous) {
+                res = res - previous + (current - previous);
+            } else {
+                res += current;
+            }
+            previous = current;
+        }
+        return res;
+    }
+
+    private static Map<Character, Integer> createRomanToIntCodeMap() {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        return map;
+    }
+
+    private static int romanToInt2(String s) {
+        if (s == null || s.equals("")) {
+            return 0;
+        }
+        int res = 0;
+        Map<Character, Integer> codeMap = createRomanToIntCodeMap();
+        for (int i = 0; i < s.length(); i++) {
+            int current = codeMap.get(s.charAt(i));
+            int next = i+1 < s.length() ? codeMap.get(s.charAt(i+1)) : -1;
+            if (next != -1 && next > current) {
+                res += (next - current);
+                i++;
+            } else {
+                res += current;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * Valid Parentheses
+     * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+     *
+     * An input string is valid if:
+     *
+     * Open brackets must be closed by the same type of brackets.
+     * Open brackets must be closed in the correct order.
+     *
+     *
+     * Example 1:
+     *
+     * Input: s = "()"
+     * Output: true
+     * Example 2:
+     *
+     * Input: s = "()[]{}"
+     * Output: true
+     * Example 3:
+     *
+     * Input: s = "(]"
+     * Output: false
+     * Example 4:
+     *
+     * Input: s = "([)]"
+     * Output: false
+     * Example 5:
+     *
+     * Input: s = "{[]}"
+     * Output: true
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= s.length <= 104
+     * s consists of parentheses only '()[]{}'.
+     */
+    private static boolean isValid(String s) {
+        Map<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            final char currentChar = s.charAt(i);
+            if (stack.isEmpty()) {
+                stack.add(currentChar);
+            } else {
+                if (map.containsKey(currentChar)) {
+                    if (stack.peek().equals(map.get(currentChar))) {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                } else {
+                    stack.add(currentChar);
+                }
+            }
+        }
+        return stack.isEmpty();
     }
 }
