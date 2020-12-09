@@ -15,13 +15,23 @@ public class Part1 {
         LOGGER.log(Level.INFO, "In longestCommonPrefix found: "
                 + longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
         LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1,1,2}));
+        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1, 1, 2}));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In romanToInt found: " + romanToInt("MCMXCIV"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In romanToInt2 found: " + romanToInt2("MCMXCIV"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In isValid found: " + isValid("([)]"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In interpret found: " + interpret("(al)G(al)()()G"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In interpret2 found: " + interpret2("(al)G(al)()()G"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates("abbaca"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In removeDuplicates2 found: " + removeDuplicates2("abbaca"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In removeDuplicates3 found: " + removeDuplicates3("abbaca"));
         LOGGER.log(Level.INFO, "--------------------------------");
     }
 
@@ -172,7 +182,7 @@ public class Part1 {
     /**
      * Roman to Integer
      * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
-     *
+     * <p>
      * Symbol       Value
      * I             1
      * V             5
@@ -182,42 +192,42 @@ public class Part1 {
      * D             500
      * M             1000
      * For example, 2 is written as II in Roman numeral, just two one's added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
-     *
+     * <p>
      * Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
-     *
+     * <p>
      * I can be placed before V (5) and X (10) to make 4 and 9.
      * X can be placed before L (50) and C (100) to make 40 and 90.
      * C can be placed before D (500) and M (1000) to make 400 and 900.
      * Given a roman numeral, convert it to an integer.
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * Example 1:
-     *
+     * <p>
      * Input: s = "III"
      * Output: 3
      * Example 2:
-     *
+     * <p>
      * Input: s = "IV"
      * Output: 4
      * Example 3:
-     *
+     * <p>
      * Input: s = "IX"
      * Output: 9
      * Example 4:
-     *
+     * <p>
      * Input: s = "LVIII"
      * Output: 58
      * Explanation: L = 50, V= 5, III = 3.
      * Example 5:
-     *
+     * <p>
      * Input: s = "MCMXCIV"
      * Output: 1994
      * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-     *
-     *
+     * <p>
+     * <p>
      * Constraints:
-     *
+     * <p>
      * 1 <= s.length <= 15
      * s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
      * It is guaranteed that s is a valid roman numeral in the range [1, 3999].
@@ -261,7 +271,7 @@ public class Part1 {
         Map<Character, Integer> codeMap = createRomanToIntCodeMap();
         for (int i = 0; i < s.length(); i++) {
             int current = codeMap.get(s.charAt(i));
-            int next = i+1 < s.length() ? codeMap.get(s.charAt(i+1)) : -1;
+            int next = i + 1 < s.length() ? codeMap.get(s.charAt(i + 1)) : -1;
             if (next != -1 && next > current) {
                 res += (next - current);
                 i++;
@@ -275,37 +285,37 @@ public class Part1 {
     /**
      * Valid Parentheses
      * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-     *
+     * <p>
      * An input string is valid if:
-     *
+     * <p>
      * Open brackets must be closed by the same type of brackets.
      * Open brackets must be closed in the correct order.
-     *
-     *
+     * <p>
+     * <p>
      * Example 1:
-     *
+     * <p>
      * Input: s = "()"
      * Output: true
      * Example 2:
-     *
+     * <p>
      * Input: s = "()[]{}"
      * Output: true
      * Example 3:
-     *
+     * <p>
      * Input: s = "(]"
      * Output: false
      * Example 4:
-     *
+     * <p>
      * Input: s = "([)]"
      * Output: false
      * Example 5:
-     *
+     * <p>
      * Input: s = "{[]}"
      * Output: true
-     *
-     *
+     * <p>
+     * <p>
      * Constraints:
-     *
+     * <p>
      * 1 <= s.length <= 104
      * s consists of parentheses only '()[]{}'.
      */
@@ -333,5 +343,130 @@ public class Part1 {
             }
         }
         return stack.isEmpty();
+    }
+
+    /**
+     * You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
+     * <p>
+     * Given the string command, return the Goal Parser's interpretation of command.
+     * <p>
+     * <p>
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: command = "G()(al)"
+     * Output: "Goal"
+     * Explanation: The Goal Parser interprets the command as follows:
+     * G -> G
+     * () -> o
+     * (al) -> al
+     * The final concatenated result is "Goal".
+     * Example 2:
+     * <p>
+     * Input: command = "G()()()()(al)"
+     * Output: "Gooooal"
+     * Example 3:
+     * <p>
+     * Input: command = "(al)G(al)()()G"
+     * Output: "alGalooG"
+     * <p>
+     * <p>
+     * Constraints:
+     * <p>
+     * 1 <= command.length <= 100
+     * command consists of "G", "()", and/or "(al)" in some order.
+     */
+    private static String interpret(String command) {
+        return command.replaceAll("\\(\\)", "o").replaceAll("\\(al\\)", "al");
+    }
+
+    private static String interpret2(String command) {
+        char[] res = new char[command.length()];
+        int j = 0;
+        for (int i = 0; i < command.length(); i++, j++) {
+            if (command.charAt(i) == 'G') {
+                res[j] = 'G';
+                continue;
+            } else if (command.charAt(i) == '(' && command.charAt(i + 1) == ')') {
+                res[j] = 'o';
+                i++;
+                continue;
+            } else if (command.charAt(i) == '(' && command.charAt(i + 1) == 'a') {
+                res[j] = 'a';
+                res[j + 1] = 'l';
+                j++;
+                i = i + 3;
+                continue;
+            }
+        }
+        return String.copyValueOf(res, 0, j);
+    }
+
+    /**
+     * Remove All Adjacent Duplicates In String
+     * Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
+     * <p>
+     * We repeatedly make duplicate removals on S until we no longer can.
+     * <p>
+     * Return the final string after all such duplicate removals have been made.  It is guaranteed the answer is unique.
+     * <p>
+     * <p>
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: "abbaca"
+     * Output: "ca"
+     * Explanation:
+     * For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+     * <p>
+     * <p>
+     * Note:
+     * <p>
+     * 1 <= S.length <= 20000
+     * S consists only of English lowercase letters.
+     */
+    // Too slow. Recursive
+    private static String removeDuplicates(String s) {
+        int length = s.length();
+        for (int i = 0; i < length - 1; i++) {
+            if (s.charAt(i) == s.charAt(i + 1)) {
+                if (i == 0) {
+                    return removeDuplicates(s.substring(i + 2));
+                } else {
+                    return removeDuplicates(s.substring(0, i) + s.substring(i + 2));
+                }
+            }
+        }
+        return s;
+    }
+
+    private static String removeDuplicates2(String s) {
+        int length = s.length();
+        for (int i = 0; i < length - 1; i++) {
+            if (s.charAt(i) == s.charAt(i + 1)) {
+                if (i == 0) {
+                    s = s.substring(i + 2);
+                } else {
+                    s = s.substring(0, i) + s.substring(i + 2);
+                }
+                i = -1;
+                length = s.length();
+            }
+        }
+        return s;
+    }
+
+    private static String removeDuplicates3(String s) {
+        char[] res = new char[s.length()];
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (j > 0 && s.charAt(i) == res[j - 1]) {
+                j--;
+            } else {
+                res[j] = s.charAt(i);
+                j++;
+            }
+        }
+        return String.copyValueOf(res, 0, j);
     }
 }
