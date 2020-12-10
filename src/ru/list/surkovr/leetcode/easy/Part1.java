@@ -3,6 +3,7 @@ package ru.list.surkovr.leetcode.easy;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Part1 {
 
@@ -12,26 +13,42 @@ public class Part1 {
         LOGGER.log(Level.INFO, "In getTwoSum found: "
                 + Arrays.toString(getTwoSum(new int[]{3, 2, 4}, 6)));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In longestCommonPrefix found: "
                 + longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1, 1, 2}));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In romanToInt found: " + romanToInt("MCMXCIV"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In romanToInt2 found: " + romanToInt2("MCMXCIV"));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In isValid found: " + isValid("([)]"));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In interpret found: " + interpret("(al)G(al)()()G"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In interpret2 found: " + interpret2("(al)G(al)()()G"));
         LOGGER.log(Level.INFO, "--------------------------------");
+
         LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates("abbaca"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In removeDuplicates2 found: " + removeDuplicates2("abbaca"));
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In removeDuplicates3 found: " + removeDuplicates3("abbaca"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+
+        LOGGER.log(Level.INFO, "In maximumWealth found: " + maximumWealth(new int[][]{{1,2,3},{3,2,1}}));
+        LOGGER.log(Level.INFO, "--------------------------------");
+
+        LOGGER.log(Level.INFO, "In reverseWords found: " + reverseWords("Let's take LeetCode contest"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In reverseWords2 found: " + reverseWords2("Let's take LeetCode contest"));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In reverseWords3 found: " + reverseWords3("Let's take LeetCode contest"));
         LOGGER.log(Level.INFO, "--------------------------------");
     }
 
@@ -468,5 +485,121 @@ public class Part1 {
             }
         }
         return String.copyValueOf(res, 0, j);
+    }
+
+    /**
+     * Richest Customer Wealth
+     * You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+     *
+     * A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: accounts = [[1,2,3],[3,2,1]]
+     * Output: 6
+     * Explanation:
+     * 1st customer has wealth = 1 + 2 + 3 = 6
+     * 2nd customer has wealth = 3 + 2 + 1 = 6
+     * Both customers are considered the richest with a wealth of 6 each, so return 6.
+     * Example 2:
+     *
+     * Input: accounts = [[1,5],[7,3],[3,5]]
+     * Output: 10
+     * Explanation:
+     * 1st customer has wealth = 6
+     * 2nd customer has wealth = 10
+     * 3rd customer has wealth = 8
+     * The 2nd customer is the richest with a wealth of 10.
+     * Example 3:
+     *
+     * Input: accounts = [[2,8,7],[7,1,3],[1,9,5]]
+     * Output: 17
+     *
+     *
+     * Constraints:
+     *
+     * m == accounts.length
+     * n == accounts[i].length
+     * 1 <= m, n <= 50
+     * 1 <= accounts[i][j] <= 100
+     */
+    private static int maximumWealth(int[][] accounts) {
+        int richestMoney = 0;
+        for (int[] customerAccounts : accounts) {
+            int currentMoney = 0;
+            for (int curBankMoney : customerAccounts) {
+              currentMoney += curBankMoney;
+            }
+            if (currentMoney > richestMoney) {
+                richestMoney = currentMoney;
+            }
+        }
+        return richestMoney;
+    }
+
+    /**
+     * Reverse Words in a String III
+     * Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+     *
+     * Example 1:
+     * Input: "Let's take LeetCode contest"
+     * Output: "s'teL ekat edoCteeL tsetnoc"
+     * Note: In the string, each word is separated by single space and there will not be any extra space in the string.
+     */
+    private static String reverseWords(String s) {
+        Stack<Character> stack = new Stack<>();
+        char[] res = new char[s.length()];
+        int resPointer = 0;
+        for (int i = 0; i < s.length(); i++) {
+            final char curChar = s.charAt(i);
+            if (curChar == ' ') {
+                while (!stack.isEmpty()) {
+                    res[resPointer] = stack.pop();
+                    resPointer++;
+                }
+                res[resPointer] = curChar;
+                resPointer++;
+            } else if (i == s.length() - 1) {
+                stack.add(curChar);
+                while (!stack.isEmpty()) {
+                    res[resPointer] = stack.pop();
+                    resPointer++;
+                }
+            } else {
+                stack.add(curChar);
+            }
+        }
+        return String.copyValueOf(res);
+    }
+
+    private static String reverseWords2(String s) {
+        return Arrays.stream(s.split(" "))
+                .map(str -> new StringBuilder(str).reverse().toString())
+                .collect(Collectors.joining(" "));
+    }
+
+    private static String reverseWords3(String s) {
+        int index = 0;
+        char[] chars = s.toCharArray();
+        int len = chars.length;
+
+        for (int i = 0; i <= len; i++) {
+            if (i == len || chars[i] == ' ') {
+                reverse(chars, index, i - 1);
+                index = i + 1;
+            }
+        }
+
+        return new String(chars);
+    }
+
+    private static void reverse(char[] s, int start, int end) {
+        while (start < end) {
+            char temp = s[start];
+            s[start++] = s[end];
+            s[end--] = temp;
+        }
     }
 }
