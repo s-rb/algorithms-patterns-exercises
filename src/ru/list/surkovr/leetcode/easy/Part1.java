@@ -41,7 +41,10 @@ public class Part1 {
         LOGGER.log(Level.INFO, "In removeDuplicates3 found: " + removeDuplicates3("abbaca"));
         LOGGER.log(Level.INFO, "--------------------------------");
 
-        LOGGER.log(Level.INFO, "In maximumWealth found: " + maximumWealth(new int[][]{{1,2,3},{3,2,1}}));
+        LOGGER.log(Level.INFO, "In maximumWealth found: " + maximumWealth(new int[][]{{1, 2, 3}, {3, 2, 1}}));
+        LOGGER.log(Level.INFO, "--------------------------------");
+
+        LOGGER.log(Level.INFO, "In findLengthOfLCIS found: " + findLengthOfLCIS(new int[]{1, 3, 5, 4, 7}));
         LOGGER.log(Level.INFO, "--------------------------------");
 
         LOGGER.log(Level.INFO, "In reverseWords found: " + reverseWords("Let's take LeetCode contest"));
@@ -530,13 +533,59 @@ public class Part1 {
         for (int[] customerAccounts : accounts) {
             int currentMoney = 0;
             for (int curBankMoney : customerAccounts) {
-              currentMoney += curBankMoney;
+                currentMoney += curBankMoney;
             }
             if (currentMoney > richestMoney) {
                 richestMoney = currentMoney;
             }
         }
         return richestMoney;
+    }
+
+    /**
+     * Longest Continuous Increasing Subsequence
+     * Given an unsorted array of integers nums, return the length of the longest continuous increasing subsequence (i.e. subarray). The subsequence must be strictly increasing.
+     * <p>
+     * A continuous increasing subsequence is defined by two indices l and r (l < r) such that it is [nums[l], nums[l + 1], ..., nums[r - 1], nums[r]] and for each l <= i < r, nums[i] < nums[i + 1].
+     * <p>
+     * <p>
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: nums = [1,3,5,4,7]
+     * Output: 3
+     * Explanation: The longest continuous increasing subsequence is [1,3,5] with length 3.
+     * Even though [1,3,5,7] is an increasing subsequence, it is not continuous as elements 5 and 7 are separated by element
+     * 4.
+     * Example 2:
+     * <p>
+     * Input: nums = [2,2,2,2,2]
+     * Output: 1
+     * Explanation: The longest continuous increasing subsequence is [2] with length 1. Note that it must be strictly
+     * increasing.
+     * <p>
+     * <p>
+     * Constraints:
+     * <p>
+     * 0 <= nums.length <= 10^4
+     * -10^9 <= nums[i] <= 10^9
+     */
+    private static int findLengthOfLCIS(int[] nums) {
+        int res = 0;
+        if (nums.length == 0) {
+            return res;
+        }
+        res = 1;
+        int cur = 1;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i + 1] > nums[i]) {
+                cur++;
+            } else {
+                res = Math.max(cur, res);
+                cur = 1;
+            }
+        }
+        return Math.max(cur, res);
     }
 
     /**
