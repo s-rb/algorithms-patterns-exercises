@@ -53,6 +53,19 @@ public class Part1 {
         LOGGER.log(Level.INFO, "--------------------------------");
         LOGGER.log(Level.INFO, "In reverseWords3 found: " + reverseWords3("Let's take LeetCode contest"));
         LOGGER.log(Level.INFO, "--------------------------------");
+
+        LOGGER.log(Level.INFO, "In sumOfLeftLeaves found: " + sumOfLeftLeaves(
+                new TreeNode(3,
+                        new TreeNode(9), new TreeNode(20,
+                        new TreeNode(15), new TreeNode(7))
+                )));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In sumOfLeftLeaves2 found: " + sumOfLeftLeaves2(
+                new TreeNode(3,
+                        new TreeNode(9), new TreeNode(20,
+                        new TreeNode(15), new TreeNode(7))
+                )));
+        LOGGER.log(Level.INFO, "--------------------------------");
     }
 
     /**
@@ -493,13 +506,13 @@ public class Part1 {
     /**
      * Richest Customer Wealth
      * You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
-     *
+     * <p>
      * A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * Example 1:
-     *
+     * <p>
      * Input: accounts = [[1,2,3],[3,2,1]]
      * Output: 6
      * Explanation:
@@ -507,7 +520,7 @@ public class Part1 {
      * 2nd customer has wealth = 3 + 2 + 1 = 6
      * Both customers are considered the richest with a wealth of 6 each, so return 6.
      * Example 2:
-     *
+     * <p>
      * Input: accounts = [[1,5],[7,3],[3,5]]
      * Output: 10
      * Explanation:
@@ -516,13 +529,13 @@ public class Part1 {
      * 3rd customer has wealth = 8
      * The 2nd customer is the richest with a wealth of 10.
      * Example 3:
-     *
+     * <p>
      * Input: accounts = [[2,8,7],[7,1,3],[1,9,5]]
      * Output: 17
-     *
-     *
+     * <p>
+     * <p>
      * Constraints:
-     *
+     * <p>
      * m == accounts.length
      * n == accounts[i].length
      * 1 <= m, n <= 50
@@ -591,7 +604,7 @@ public class Part1 {
     /**
      * Reverse Words in a String III
      * Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
-     *
+     * <p>
      * Example 1:
      * Input: "Let's take LeetCode contest"
      * Output: "s'teL ekat edoCteeL tsetnoc"
@@ -650,5 +663,76 @@ public class Part1 {
             s[start++] = s[end];
             s[end--] = temp;
         }
+    }
+
+    // TODO
+
+    /**
+     * Sum of Left Leaves
+     * Find the sum of all left leaves in a given binary tree.
+     * <p>
+     * Example:
+     * <p>
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
+     * <p>
+     * There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
+     */
+    private static int sumOfLeftLeaves(TreeNode root) {
+        int sum = 0;
+        if (Objects.isNull(root)) {
+            return sum;
+        }
+        return getSum(root, false, sum);
+    }
+
+    private static Integer getSum(TreeNode node, boolean isLeft, Integer sum) {
+        if (Objects.isNull(node.left) && Objects.isNull(node.right)) {
+            if (isLeft) {
+                return sum += node.val;
+            }
+        }
+        if (Objects.nonNull(node.left)) {
+            sum = getSum(node.left, true, sum);
+        }
+        if (Objects.nonNull(node.right)) {
+            sum = getSum(node.right, false, sum);
+        }
+        return sum;
+    }
+
+    private static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    private static int sumOfLeftLeaves2(TreeNode root) {
+        return calcSum(root);
+    }
+
+    private static int calcSum(TreeNode node) {
+        if (Objects.isNull(node)) {
+            return 0;
+        }
+        int sum = 0;
+        if (Objects.nonNull(node.left) && Objects.isNull(node.left.left) && Objects.isNull(node.left.right)) {
+            sum += node.left.val;
+        }
+        sum += calcSum(node.left) + calcSum(node.right);
+        return sum;
     }
 }
