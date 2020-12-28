@@ -1,10 +1,8 @@
-package tests;
-
-import bubble_sort.BubbleSort;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import sortAlgorithms.BubbleSort;
 
 import static org.junit.Assert.*;
 
@@ -27,9 +25,8 @@ public class BubbleSortTest {
 
     @Test
     public void sort() {
-        int[] actual = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        BubbleSort.sort(array);
-        int[] expected = array;
+        int[] expected = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] actual = BubbleSort.sort(array);;
         Assert.assertArrayEquals(expected, actual);
     }
 
@@ -41,9 +38,8 @@ public class BubbleSortTest {
 
     @Test
     public void sort_EMPTY_ARRAY() { // сортируется также как и обычный заполненный массив
-        int[] actual = {};
-        BubbleSort.sort(arrayEmpty);
-        int[] expected = arrayEmpty;
+        int[] expected = {};
+        int[] actual = BubbleSort.sort(arrayEmpty);;
         Assert.assertArrayEquals(expected, actual);
     }
 }

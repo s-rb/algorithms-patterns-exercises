@@ -1,6 +1,5 @@
 import array_max_value.ArrayMaxValue;
 import binary_search.BinarySearch;
-import bubble_sort.BubbleSort;
 import merge_sort.MergeSort;
 import quick_sort.QuickSort;
 import rabin_karp.RabinKarpExtended;
@@ -8,8 +7,11 @@ import rabin_karp.RabinKarpExtended;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Main {
+
+    private static final Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
@@ -20,14 +22,23 @@ public class Main {
         String text2 = "he rides a bike and forgot about his birthday";
         String query2 = "birthday";
 
+
+        // Tests
+        int[] initialBubbleArray = Arrays.copyOf(array, array.length);
+        log.info("--------\nStarts Bubble sort. \n\tInitial array: " + Arrays.toString(initialBubbleArray)
+                + "\n\tBubble-sorted array: " + Arrays.toString(sortAlgorithms.BubbleSort.sort(initialBubbleArray)));
+        int[] initialInsertArray = Arrays.copyOf(array, array.length);
+        log.info("--------\nStarts Insert sort. \n\tInitial array: " + Arrays.toString(initialInsertArray)
+                + "\n\tInsert-sorted array: " + Arrays.toString(sortAlgorithms.InsertSort.sort(initialInsertArray)));
+
         //Lets test!
-        arrayMaxValueRun(stringArrayForTest);
-        binarySearchRun(stringArrayForTest);
-        bubbleSortRun(Arrays.copyOf(array, array.length));
-        quickSortRun(Arrays.copyOf(array, array.length));
-        mergeSortRun(Arrays.copyOf(array, array.length));
-        rabinKarpRun(text, query);
-        rabinKarpRun(text2, query2);
+//        arrayMaxValueRun(stringArrayForTest);
+//        binarySearchRun(stringArrayForTest);
+//        bubbleSortRun(Arrays.copyOf(array, array.length));
+//        quickSortRun(Arrays.copyOf(array, array.length));
+//        mergeSortRun(Arrays.copyOf(array, array.length));
+//        rabinKarpRun(text, query);
+//        rabinKarpRun(text2, query2);
     }
 
     private static void searchTextAndPrint(RabinKarpExtended rabinKarpExtended, String query) {
@@ -65,13 +76,6 @@ public class Main {
         System.out.println("Ищем значение, которое в массиве отсутствует");
         System.out.println(binarySearch.search("9"));
         System.out.println("=========== Конец теста 2. BinarySearch ============");
-    }
-
-    private static void bubbleSortRun(int[] array) {
-        System.out.println("\n=> 3. BubbleSort");
-        BubbleSort.sort(array);
-        System.out.println(Arrays.toString(array));
-        System.out.println("=========== Конец теста 3 ============");
     }
 
     private static void quickSortRun(int[] array) {
