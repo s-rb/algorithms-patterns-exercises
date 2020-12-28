@@ -30,6 +30,9 @@ public class Main {
         int[] initialInsertArray = Arrays.copyOf(array, array.length);
         log.info("--------\nStarts Insert sort. \n\tInitial array: " + Arrays.toString(initialInsertArray)
                 + "\n\tInsert-sorted array: " + Arrays.toString(sortAlgorithms.InsertSort.sort(initialInsertArray)));
+        int[] initialSelectArray = Arrays.copyOf(array, array.length);
+        log.info("--------\nStarts Select sort. \n\tInitial array: " + Arrays.toString(initialSelectArray)
+                + "\n\tSelect-sorted array: " + Arrays.toString(sortAlgorithms.SelectSort.sort(initialSelectArray)));
 
         //Lets test!
 //        arrayMaxValueRun(stringArrayForTest);
