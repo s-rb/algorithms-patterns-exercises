@@ -1,4 +1,4 @@
-package ru.list.surkovr.arraysAndStrings;
+package surkovr.arraysAndStrings;
 
 // Task 2
 // Write code to reverse a C-Style String. (C-String means that “abcd” is represented as

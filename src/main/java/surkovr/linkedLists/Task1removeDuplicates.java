@@ -1,17 +1,16 @@
-package ru.list.surkovr.linkedLists;
+package surkovr.linkedLists;
 
 // Task
 // Write code to remove duplicates from an unsorted linked list.
 //  FOLLOW UP
 //  How would you solve this problem if a temporary bu#er is not allowed?􀀁
 
-import ru.list.surkovr.linkedLists.singleLinkedListImpl.Node;
+import surkovr.linkedLists.singleLinkedListImpl.Node;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task1removeDuplicates {
 

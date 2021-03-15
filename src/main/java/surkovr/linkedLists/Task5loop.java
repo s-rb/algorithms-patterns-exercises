@@ -1,4 +1,4 @@
-package ru.list.surkovr.linkedLists;
+package surkovr.linkedLists;
 
 //  Task
 //  Given a circular linked list, implement an algorithm which returns node at the beginning
@@ -10,7 +10,7 @@ package ru.list.surkovr.linkedLists;
 //  input: A -> B -> C -> D -> E -> C [the same C as earlier]
 //  output: C
 
-import ru.list.surkovr.linkedLists.singleLinkedListImpl.Node;
+import surkovr.linkedLists.singleLinkedListImpl.Node;
 
 import java.util.HashSet;
 import java.util.Set;

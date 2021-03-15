@@ -1,4 +1,4 @@
-package ru.list.surkovr.leetcode.easy;
+package leetcode.easy;
 
 import java.util.*;
 import java.util.logging.Level;
@@ -65,6 +65,8 @@ public class Part1 {
                         new TreeNode(9), new TreeNode(20,
                         new TreeNode(15), new TreeNode(7))
                 )));
+        LOGGER.log(Level.INFO, "--------------------------------");
+        LOGGER.log(Level.INFO, "In reverse Integer found: " + reverseInt(123));
         LOGGER.log(Level.INFO, "--------------------------------");
     }
 
@@ -734,5 +736,25 @@ public class Part1 {
         }
         sum += calcSum(node.left) + calcSum(node.right);
         return sum;
+    }
+
+    /*
+    Reverse integer
+    Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value
+    to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+    Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+    */
+    public static int reverseInt(int x) {
+        final String s = Integer.toUnsignedString(x);
+        char[] rev = new char[s.length()];
+        for (int i = 0, j = s.length() - 1; i < s.length(); i++, j--) {
+            rev[j] = s.charAt(i);
+        }
+        final String revStr = Arrays.toString(rev);
+        try {
+            return Integer.parseUnsignedInt(revStr);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package ru.list.surkovr.arraysAndStrings;
+package surkovr.arraysAndStrings;
 
 public class Task1stringUniqueChars {
 

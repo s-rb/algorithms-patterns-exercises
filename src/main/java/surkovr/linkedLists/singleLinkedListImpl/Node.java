@@ -1,4 +1,4 @@
-package ru.list.surkovr.linkedLists.singleLinkedListImpl;
+package surkovr.linkedLists.singleLinkedListImpl;
 
 
 public class Node {

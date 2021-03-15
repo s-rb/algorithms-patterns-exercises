@@ -1,10 +1,10 @@
-package ru.list.surkovr.linkedLists;
+package surkovr.linkedLists;
 
 // Task
 // Implement an algorithm to delete a node in the middle of a single linked list, given
 //  only access to that node.
 
-import ru.list.surkovr.linkedLists.singleLinkedListImpl.Node;
+import surkovr.linkedLists.singleLinkedListImpl.Node;
 
 public class Task3deleteElementInTheMiddle {
 
