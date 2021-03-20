@@ -14,4 +14,10 @@ class NewPart1Test {
         final int actual = newPart1.reverseInt(-321);
         assertThat(actual).isEqualTo(-123);
     }
+
+    @Test
+    void plusOne() {
+        int[] actual = newPart1.plusOne(new int[]{9});
+        assertThat(actual).isEqualTo(new int[]{1, 0});
+    }
 }
