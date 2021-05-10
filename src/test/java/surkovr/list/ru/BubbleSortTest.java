@@ -1,8 +1,10 @@
+package surkovr.list.ru;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ru.list.surkovr.sortAlgorithms.BubbleSort;
+import ru.list.surkovr.algorithms.sortAlgorithms.BubbleSort;
 
 public class BubbleSortTest {
 
