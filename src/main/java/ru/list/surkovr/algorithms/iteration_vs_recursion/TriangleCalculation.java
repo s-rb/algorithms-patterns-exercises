@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.iteration_vs_recursion.triangle;
+package ru.list.surkovr.algorithms.iteration_vs_recursion;
 
 public class TriangleCalculation {
 

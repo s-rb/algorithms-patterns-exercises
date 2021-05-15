@@ -1,7 +1,7 @@
-package ru.list.surkovr.algorithms.iteration_vs_recursion.factorial;
+package ru.list.surkovr.algorithms.iteration_vs_recursion;
 
 public class FactorialCalculation {
-    public static long calculateFactorial(long n) {
+    public static long calculateIterative(long n) {
         if (n < 0) {
             throw new IllegalArgumentException("n value cannot be negative!");
         }
@@ -12,8 +12,8 @@ public class FactorialCalculation {
         return result;
     }
 
-    public static long calculateFactorialRec(long n) {
+    public static long calculateRecursive(long n) {
         return (n <= 1) ? 1 :
-                n * calculateFactorialRec(n - 1);
+                n * calculateRecursive(n - 1);
     }
 }
