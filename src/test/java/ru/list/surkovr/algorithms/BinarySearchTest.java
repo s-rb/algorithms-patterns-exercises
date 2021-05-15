@@ -28,14 +28,10 @@ public class BinarySearchTest {
         Assertions.assertThat(actual).isEqualTo(5);
     }
 
-    /*private static void binarySearchRun(String[] stringArrayForTest) {
-        System.out.println("\n=> 2. Бинарный поиск");
+    @Test
+    public void searchTestWrongValue() {
         ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(stringArrayForTest));
-        BinarySearch binarySearch = new BinarySearch(arrayList);
-        System.out.println("Ищем значение, которое есть в массиве");
-        System.out.println(binarySearch.search("6"));
-        System.out.println("Ищем значение, которое в массиве отсутствует");
-        System.out.println(binarySearch.search("9"));
-        System.out.println("=========== Конец теста 2. BinarySearch ============");
-    }*/
+        final int actual = BinarySearch.search(arrayList, "9");
+        Assertions.assertThat(actual).isEqualTo(-1);
+    }
 }
