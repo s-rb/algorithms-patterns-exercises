@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.data_structures.binary_tree;
+package ru.list.surkovr.data_structures.binary_tree;
 
 public class Node
 {

@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.data_structures.single_linked_list;
+package ru.list.surkovr.data_structures.single_linked_list;
 
 public class SingleLinkedList {
     private ListItem top;

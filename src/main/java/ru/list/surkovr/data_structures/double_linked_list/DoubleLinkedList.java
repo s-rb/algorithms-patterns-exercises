@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.data_structures.double_linked_list;
+package ru.list.surkovr.data_structures.double_linked_list;
 
 public class DoubleLinkedList {
     private ListItem head;

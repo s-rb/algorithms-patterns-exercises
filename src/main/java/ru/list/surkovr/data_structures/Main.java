@@ -1,10 +1,10 @@
-package ru.list.surkovr.algorithms.data_structures;
+package ru.list.surkovr.data_structures;
 
-import ru.list.surkovr.algorithms.data_structures.binary_tree.BinaryTree;
-import ru.list.surkovr.algorithms.data_structures.binary_tree.Node;
-import ru.list.surkovr.algorithms.data_structures.double_linked_list.DoubleLinkedList;
-import ru.list.surkovr.algorithms.data_structures.single_linked_list.ListItem;
-import ru.list.surkovr.algorithms.data_structures.single_linked_list.SingleLinkedList;
+import ru.list.surkovr.data_structures.binary_tree.BinaryTree;
+import ru.list.surkovr.data_structures.binary_tree.Node;
+import ru.list.surkovr.data_structures.double_linked_list.DoubleLinkedList;
+import ru.list.surkovr.data_structures.single_linked_list.ListItem;
+import ru.list.surkovr.data_structures.single_linked_list.SingleLinkedList;
 
 import java.util.List;
 
@@ -31,14 +31,14 @@ public class Main {
 
         // doubleLinkedList
         System.out.println("\n=== Test DoubleLinkedList");
-        ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem dItem = new ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem("1"); // 1
+        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem = new ru.list.surkovr.data_structures.double_linked_list.ListItem("1"); // 1
         System.out.println("Создаем элемент " + dItem.getData() + " и вносим его в список");
         DoubleLinkedList dList = new DoubleLinkedList();
         dList.addToHead(dItem);
-        ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem dItem2 = new ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem("2");
-        ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem dItem3 = new ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem("3");
-        ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem dItem4 = new ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem("4");
-        ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem dItem5 = new ru.list.surkovr.algorithms.data_structures.double_linked_list.ListItem("5");
+        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem2 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("2");
+        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem3 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("3");
+        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem4 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("4");
+        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem5 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("5");
         dList.addToHead(dItem2); // 2 - 1
         dList.addToHead(dItem3); // 3 - 2 - 1
         System.out.println("- Добавляем в начало элементы: " + dItem2.getData() + " и " + dItem3.getData());

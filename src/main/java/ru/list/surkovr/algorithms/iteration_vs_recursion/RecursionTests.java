@@ -1,6 +1,6 @@
 package ru.list.surkovr.algorithms.iteration_vs_recursion;
 
-import ru.list.surkovr.iteration_vs_recursion.triangle.TriangleCalculation;
+import ru.list.surkovr.algorithms.iteration_vs_recursion.triangle.TriangleCalculation;
 
 import static java.util.logging.Level.INFO;
 

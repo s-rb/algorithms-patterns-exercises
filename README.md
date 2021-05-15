@@ -14,11 +14,9 @@ Simple implementations of some algorithms and data structures
 - Double linked list
 - Binary tree
 
-## Решение задач из книги Cracking the coding interview.
+# Design patters
 
-# Паттерны проектирования
-
-Реализация некоторых популярных паттернов проектирования:
+Implementation of some popular design patterns:
 * [Factory](src/main/java/ru/list/surkovr/patterns/factory)
 * [AbstractFactory](src/main/java/ru/list/surkovr/patterns/abstractFactory)
 * [Decorator](src/main/java/ru/list/surkovr/patterns/decorator)
@@ -28,3 +26,5 @@ Simple implementations of some algorithms and data structures
 * [Strategy](src/main/java/ru/list/surkovr/patterns/strategy)
 * [Singleton](src/main/java/ru/list/surkovr/patterns/singleton)
 * [Adapter](src/main/java/ru/list/surkovr/patterns/adapter)
+
+## Решение задач из книги Cracking the coding interview.

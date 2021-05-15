@@ -1,26 +1,17 @@
 package ru.list.surkovr.algorithms.binary_search;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-public class BinarySearch
-{
-    private ArrayList<String> list;
+public class BinarySearch {
 
-    public BinarySearch(ArrayList<String> list)
-    {
-        this.list = list;
+    public static int search(List<String> list, String query) {
+        return search(query, 0, list.size() - 1, list);
     }
 
-    public int search(String query)
-    {
-        return search(query, 0, list.size() - 1);
-}
-
-    private int search(String query, int from, int to)
-    {
+    private static int search(String query, int from, int to, List<String> list) {
         // Для бинарного поиска, требуется отсортированная коллекция. Возвращаем номер индекса в отстортированной коллекции
-        // Задание не имеет смысла если подается ArrayList неотсортированный, поскольку полученный индекс будет указывать
+        // Не имеет смысла если подается ArrayList неотсортированный, поскольку полученный индекс будет указывать
         // На другой объект
         if (query == null || query.isEmpty()) {
             System.out.println("Строка поиска пуста");
@@ -39,13 +30,12 @@ public class BinarySearch
         } else if (from == to) { // Если остался один элемент и он не равен искомому, то такого элемента в массиве нет
             System.out.println("\tЭлемента в массиве нет");
             return -1;
-        }
-        else if (stringComparator < 0) { // Во второй половине находится результат
+        } else if (stringComparator < 0) { // Во второй половине находится результат
             System.out.println("\tИщем в большей половине массива - индексы от " + (middleIndex + 1) + " до " + to);
-            return search(query, middleIndex + 1, to);
+            return search(query, middleIndex + 1, to, list);
         } else {
             System.out.println("\tИщем в меньшей половине массива - индексы от " + from + " до " + (middleIndex - 1));
-            return search(query, from, middleIndex - 1);
+            return search(query, from, middleIndex - 1, list);
         }
     }
 }
