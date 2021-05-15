@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.sortAlgorithms.merge_sort;
+package ru.list.surkovr.algorithms.sortAlgorithms;
 
 public class MergeSort {
     public static void mergeSort(int[] array) {

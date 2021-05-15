@@ -1,20 +1,22 @@
 package ru.list.surkovr.algorithms.sortAlgorithms;
 
-/**
- * Сравниваем каждый раз элементы друг с другой - самый большой элемент переносится вправо
- */
-public class BubbleSort {
-
-    public static int[] sort(int[] src) {
-        for (int i = 0; i < src.length - 1; i++) {
-            for (int j = i + 1; j < src.length; j++) {
-                if (src[i] > src[j]) {
-                    int temp = src[j];
-                    src[j] = src[i];
-                    src[i] = temp;
+public class BubbleSort
+{
+    public static void sort(int[] array)
+    {
+        int n = array.length;
+        int temp;
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 1; j < n - i; j++)
+            {
+                if(array[j-1] > array[j])
+                {
+                    temp = array[j-1];
+                    array[j-1] = array[j];
+                    array[j] = temp;
                 }
             }
         }
-        return src;
     }
 }

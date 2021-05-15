@@ -8,13 +8,13 @@ public class RecursionTests {
 
     public static void main(String[] args) {
         logger.log(INFO, "Recursion test:");
-        logger.log(INFO, "- triangle sum for n = 1: " + TriangleCalculation.calculateRecursive(1));
-        logger.log(INFO, "- triangle sum for n = 2: " + TriangleCalculation.calculateRecursive(2));
-        logger.log(INFO, "- triangle sum for n = 3: " + TriangleCalculation.calculateRecursive(3));
+        logger.log(INFO, "- triangle sum for n = 1: " + TriangleNumbersCalculation.calculateRecursive(1));
+        logger.log(INFO, "- triangle sum for n = 2: " + TriangleNumbersCalculation.calculateRecursive(2));
+        logger.log(INFO, "- triangle sum for n = 3: " + TriangleNumbersCalculation.calculateRecursive(3));
         logger.log(INFO, "-------------------------------");
         logger.log(INFO, "Iteration test:");
-        logger.log(INFO, "- triangle sum for n = 1: " + TriangleCalculation.calculateIterative(1));
-        logger.log(INFO, "- triangle sum for n = 2: " + TriangleCalculation.calculateIterative(2));
-        logger.log(INFO, "- triangle sum for n = 3: " + TriangleCalculation.calculateIterative(3));
+        logger.log(INFO, "- triangle sum for n = 1: " + TriangleNumbersCalculation.calculateIterative(1));
+        logger.log(INFO, "- triangle sum for n = 2: " + TriangleNumbersCalculation.calculateIterative(2));
+        logger.log(INFO, "- triangle sum for n = 3: " + TriangleNumbersCalculation.calculateIterative(3));
     }
 }

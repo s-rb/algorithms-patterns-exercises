@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.sortAlgorithms.quick_sort;
+package ru.list.surkovr.algorithms.sortAlgorithms;
 
 public class QuickSort
 {

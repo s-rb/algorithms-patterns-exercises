@@ -1,6 +1,6 @@
 package ru.list.surkovr.algorithms.iteration_vs_recursion;
 
-public class TriangleCalculation {
+public class TriangleNumbersCalculation {
 
     public static int calculateRecursive(int n) {
         if (n < 1) {

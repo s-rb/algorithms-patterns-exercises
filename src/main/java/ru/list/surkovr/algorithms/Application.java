@@ -1,12 +1,8 @@
 package ru.list.surkovr.algorithms;
 
-import ru.list.surkovr.algorithms.array_max_value.ArrayMaxValue;
-import ru.list.surkovr.algorithms.binary_search.BinarySearch;
 import ru.list.surkovr.algorithms.rabin_karp.RabinKarpExtended;
-import ru.list.surkovr.algorithms.sortAlgorithms.merge_sort.MergeSort;
-import ru.list.surkovr.algorithms.sortAlgorithms.quick_sort.QuickSort;
+import ru.list.surkovr.algorithms.sortAlgorithms.BubbleSortSecondImpl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -24,22 +20,8 @@ public class Application {
         String text2 = "he rides a bike and forgot about his birthday";
         String query2 = "birthday";
 
-
-        // Tests
-        int[] initialBubbleArray = Arrays.copyOf(array, array.length);
-        log.info("--------\nStarts Bubble sort. \n\tInitial array: " + Arrays.toString(initialBubbleArray)
-                + "\n\tBubble-sorted array: " + Arrays.toString(ru.list.surkovr.algorithms.sortAlgorithms.BubbleSort.sort(initialBubbleArray)));
-        int[] initialInsertArray = Arrays.copyOf(array, array.length);
-        log.info("--------\nStarts Insert sort. \n\tInitial array: " + Arrays.toString(initialInsertArray)
-                + "\n\tInsert-sorted array: " + Arrays.toString(ru.list.surkovr.algorithms.sortAlgorithms.InsertSort.sort(initialInsertArray)));
-        int[] initialSelectArray = Arrays.copyOf(array, array.length);
-        log.info("--------\nStarts Select sort. \n\tInitial array: " + Arrays.toString(initialSelectArray)
-                + "\n\tSelect-sorted array: " + Arrays.toString(ru.list.surkovr.algorithms.sortAlgorithms.SelectSort.sort(initialSelectArray)));
-
         //Lets test!
 //        bubbleSortRun(Arrays.copyOf(array, array.length));
-        quickSortRun(Arrays.copyOf(array, array.length));
-        mergeSortRun(Arrays.copyOf(array, array.length));
         rabinKarpRun(text, query);
         rabinKarpRun(text2, query2);
     }
@@ -51,20 +33,6 @@ public class Application {
         } else {
             System.out.println("Указанная подстрока отсутствует или невозможно найти из-за ограничения алфавита в поиске");
         }
-    }
-
-    private static void quickSortRun(int[] array) {
-        System.out.println("\n=> 4. QuickSort");
-        QuickSort.sort(array);
-        System.out.println(Arrays.toString(array));
-        System.out.println("=========== Конец теста 4 ============");
-    }
-
-    private static void mergeSortRun(int[] array) {
-        System.out.println("\n=> 5. MergeSort");
-        MergeSort.mergeSort(array);
-        System.out.println(Arrays.toString(array));
-        System.out.println("=========== Конец теста 5 ============");
     }
 
     private static void rabinKarpRun(String text, String query) {

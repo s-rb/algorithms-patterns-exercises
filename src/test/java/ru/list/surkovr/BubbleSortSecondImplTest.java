@@ -4,11 +4,11 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.list.surkovr.algorithms.sortAlgorithms.BubbleSort;
+import ru.list.surkovr.algorithms.sortAlgorithms.BubbleSortSecondImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BubbleSortTest {
+public class BubbleSortSecondImplTest {
 
     int[] array;
     int[] arrayNull;
@@ -28,14 +28,14 @@ public class BubbleSortTest {
     @Test
     public void sort() {
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] actual = BubbleSort.sort(array);
+        int[] actual = BubbleSortSecondImpl.sort(array);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     public void sort_NULL_ARRAY() {
         try {
-            BubbleSort.sort(arrayNull);
+            BubbleSortSecondImpl.sort(arrayNull);
         } catch (Exception actual) {
             Exception expected = new NullPointerException("В метод передан объект null");
             assertThat(actual).isNotNull().isEqualToComparingFieldByField(expected);
@@ -45,7 +45,7 @@ public class BubbleSortTest {
     @Test
     public void sort_EMPTY_ARRAY() { // сортируется также как и обычный заполненный массив
         int[] expected = {};
-        int[] actual = BubbleSort.sort(arrayEmpty);
+        int[] actual = BubbleSortSecondImpl.sort(arrayEmpty);
         Assertions.assertThat(actual).isNotNull().containsExactly(expected);
     }
 }
