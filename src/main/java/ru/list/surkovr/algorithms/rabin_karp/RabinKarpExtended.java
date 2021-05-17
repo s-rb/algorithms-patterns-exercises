@@ -1,10 +1,13 @@
 package ru.list.surkovr.algorithms.rabin_karp;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+@Slf4j
 public class RabinKarpExtended {
     private String text;
     private TreeMap<Integer, Integer> number2position;
@@ -38,16 +41,16 @@ public class RabinKarpExtended {
             }
         }
         if (queryIntString.length() < 1) {
-            System.out.println("В тексте нет данной подстроки"); // Можно убрать дублирование вывода
+            log.info("В тексте нет данной подстроки"); // Можно убрать дублирование вывода
             return null;
         }
         queryInt = Integer.parseInt(queryIntString.toString());
         if (!number2position.containsKey(queryInt)) { // Ищем
-            System.out.println("В тексте нет данной подстроки"); // Можно убрать дублирование вывода
+            log.info("В тексте нет данной подстроки"); // Можно убрать дублирование вывода
             return null;
         }
         int startIndex = number2position.get(queryInt);
-        System.out.println("Подстрока начинается с индекса " + startIndex + " (нумерация с '0')");
+        log.info("Подстрока начинается с индекса " + startIndex + " (нумерация с '0')");
         for (int k = 0; k < query.length(); k++) {
             indices.add(startIndex + k);
         }
