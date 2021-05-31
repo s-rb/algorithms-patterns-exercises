@@ -1,4 +1,4 @@
-package ru.list.surkovr.recursion;
+package ru.list.surkovr.algorithms.recursion;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -12,23 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // some ru.list.surkovr.tests
-        // singleLinkedList
-        System.out.println("\n=== Test SingleLinkedList");
-        ListItem sItem = new ListItem("1");
-        System.out.println("Создаем элемент " + sItem.getData() + " и вносим его в список");
-        SingleLinkedList sList = new SingleLinkedList();
-        sList.push(sItem);
-        ListItem sItem2 = new ListItem("2");
-        ListItem sItem3 = new ListItem("3");
-        sList.push(sItem2);
-        sList.push(sItem3);
-        System.out.println("- Добавляем в список в головную часть элементы " + sItem2.getData() + " и " + sItem3.getData());
-        System.out.println("Первый в списке: " + sList.pop().getData() + " получаем его и удаляем из списка" +
-                "\n- Снова удаляем первый элемент"); // получаем первый элемент и удаляем его из списка
-        sList.removeTop();
-        System.out.println("Первый в списке: " + sList.pop().getData());
-
         // doubleLinkedList
         System.out.println("\n=== Test DoubleLinkedList");
         ru.list.surkovr.data_structures.double_linked_list.ListItem dItem = new ru.list.surkovr.data_structures.double_linked_list.ListItem("1"); // 1

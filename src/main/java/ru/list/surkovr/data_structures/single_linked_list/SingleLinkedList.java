@@ -38,4 +38,8 @@ public class SingleLinkedList {
             }
         }
     }
+
+    public ListItem getTop() {
+        return top;
+    }
 }
