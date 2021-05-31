@@ -12,32 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // doubleLinkedList
-        System.out.println("\n=== Test DoubleLinkedList");
-        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem = new ru.list.surkovr.data_structures.double_linked_list.ListItem("1"); // 1
-        System.out.println("Создаем элемент " + dItem.getData() + " и вносим его в список");
-        DoubleLinkedList dList = new DoubleLinkedList();
-        dList.addToHead(dItem);
-        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem2 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("2");
-        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem3 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("3");
-        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem4 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("4");
-        ru.list.surkovr.data_structures.double_linked_list.ListItem dItem5 = new ru.list.surkovr.data_structures.double_linked_list.ListItem("5");
-        dList.addToHead(dItem2); // 2 - 1
-        dList.addToHead(dItem3); // 3 - 2 - 1
-        System.out.println("- Добавляем в начало элементы: " + dItem2.getData() + " и " + dItem3.getData());
-        dList.addToTail(dItem4); // 3 - 2 - 1 - 4
-        dList.addToTail(dItem5); //  3 - 2 - 1 - 4 - 5
-        System.out.println("- Добавляем в конец элементы: " + dItem4.getData() + " и " + dItem5.getData());
-        System.out.println("Первый элемент: " + dList.getHeadElement().getData());
-        System.out.println("Последний элемент: " + dList.getTailElement().getData());
-        System.out.println("- Получаем и удаляем первый с головы: " + dList.popHeadElement().getData()); // 2 - 1 - 4 - 5
-        System.out.println("- Получаем и удаляем последний элемент: " + dList.popTailElement().getData()); // 2 - 1 - 4
-        System.out.println("- Удаляем первый и последний элементы, выводим оставшиеся: ");
-        dList.removeHeadElement(); // 1 - 4
-        dList.removeTailElement(); // 1
-        System.out.println("\t Первый элемент: " + dList.getHeadElement().getData());
-        System.out.println("\t Последний элемент: " + dList.getTailElement().getData());
-
         // BinaryTree test
         System.out.println("\n=== Test BinaryTree");
         Node node = new Node("5");
