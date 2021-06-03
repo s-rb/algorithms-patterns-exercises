@@ -62,6 +62,10 @@ public class BinaryTree {
         }
         return resultList;
     }
+
+    public Node getRoot() {
+        return root;
+    }
 }
 
 //                do {
