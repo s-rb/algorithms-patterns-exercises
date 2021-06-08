@@ -28,6 +28,7 @@ Implementation of some popular design patterns:
 * [Adapter](src/main/java/ru/list/surkovr/patterns/adapter)
 
 ## Решение задач из книги Cracking the coding interview.
+* [Содержит ли строка уникальные символы](src/main/java/ru/list/surkovr/exercises/arrays_and_strings/Task1stringUniqueChars.java)
 
 
 ```/*

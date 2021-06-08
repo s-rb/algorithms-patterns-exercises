@@ -1,4 +1,4 @@
-package surkovr.arraysAndStrings;
+package ru.list.surkovr.exercises.arrays_and_strings;
 
 import java.util.Arrays;
 import java.util.Random;

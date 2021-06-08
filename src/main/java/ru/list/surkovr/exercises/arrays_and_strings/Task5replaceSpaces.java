@@ -1,4 +1,4 @@
-package surkovr.arraysAndStrings;
+package ru.list.surkovr.exercises.arrays_and_strings;
 
 // Task
 // Write a method to replace all spaces in a string with ‘%20’.

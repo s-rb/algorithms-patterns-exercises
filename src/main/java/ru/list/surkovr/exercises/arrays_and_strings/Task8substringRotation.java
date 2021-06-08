@@ -1,4 +1,4 @@
-package surkovr.arraysAndStrings;
+package ru.list.surkovr.exercises.arrays_and_strings;
 
 // Task
 // Assume you have a method isSubstring which checks if one word is a substring of

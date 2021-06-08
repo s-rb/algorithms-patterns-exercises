@@ -1,4 +1,4 @@
-package surkovr.arraysAndStrings;
+package ru.list.surkovr.exercises.arrays_and_strings;
 
 // Task
 // Write an algorithm such that if an element in an MxN matrix is 0, its entire row and

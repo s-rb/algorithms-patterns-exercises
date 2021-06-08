@@ -1,4 +1,4 @@
-package surkovr.arraysAndStrings;
+package ru.list.surkovr.exercises.arrays_and_strings;
 
 public class Task1stringUniqueChars {
 
@@ -8,20 +8,8 @@ public class Task1stringUniqueChars {
 
     // Для упрощения принимаем, что применяется кодировка ASCII (256 кодов)
 
-    public static void main(String[] args) {
-        String notUniqString = "Some source string. It contains NOT unique characters";
-        String uniqString = "String";
-
-        System.out.println("Not unique string result: " + isContainsUniqueChars(notUniqString));
-        System.out.println("Unique string: " + isContainsUniqueChars(uniqString));
-
-        System.out.println("-------- without additional datastructure --------");
-        System.out.println("Not unique string result: " + isContainsUniqueChars_withoutAdditionalDataStructure(notUniqString));
-        System.out.println("Unique string: " + isContainsUniqueChars_withoutAdditionalDataStructure(uniqString));
-    }
-
     // Сложность O(n)
-    private static boolean isContainsUniqueChars(String s) {
+    public static boolean isContainsUniqueChars(String s) {
         // Set<Character> chars = new HashSet<>(); - общий случай, если не знаем кодировку.
         boolean[] res = new boolean[256];
         for (char c : s.toCharArray()) {
@@ -33,7 +21,7 @@ public class Task1stringUniqueChars {
     }
 
     // Без доп структур - сложность O(n^2)
-    private static boolean isContainsUniqueChars_withoutAdditionalDataStructure(String s) {
+    public static boolean isContainsUniqueCharsNoAddDataStruct(String s) {
         for (int i = 0; i < s.length(); i++) {
             for (int j = s.length() - 1; j > i; j--) {
                 if (s.charAt(i) == s.charAt(j)) return false;
