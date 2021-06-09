@@ -6,15 +6,7 @@ package ru.list.surkovr.exercises.arrays_and_strings;
 
 public class Task2stringReverse {
 
-    public static void main(String[] args) {
-
-        String s = "String to reverse";
-        String res = reverseCstyleString(s);
-
-        System.out.println(res);
-    }
-
-    private static String reverseCstyleString(String s) {
+    public static String reverseCstyleString(String s) {
         StringBuilder stringBuilder = new StringBuilder();
         char nullChar = '\u0000';
         stringBuilder.append(nullChar);
