@@ -7,17 +7,8 @@ public class Task4anagrams {
 
     // Для упрощения принимаем, что применяется кодировка ASCII (256 кодов)
 
-    public static void main(String[] args) {
-        String anagramString1 = "some anagram string";
-        String anagramString2 = "emos granama gnistr";
-        String notAnagramString2 = "It's NOT anagram string";
-
-        System.out.println("Check anagram strings: " + isStringsAnagrams(anagramString1, anagramString2));
-        System.out.println("Check NOT anagram strings: " + isStringsAnagrams(anagramString1, notAnagramString2));
-    }
-
     // Не учитывая возможное разное количество пробелов и знаков препинания
-    private static boolean isStringsAnagrams(String s1, String s2) {
+    public static boolean isStringsAnagrams(String s1, String s2) {
         if (s1 == null || s2 == null || s1.equals("") || s2.equals("")
                 || (s1.length() != s2.length())) return false;
         char[] s1arr = s1.toCharArray();
