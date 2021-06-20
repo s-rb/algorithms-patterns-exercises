@@ -5,16 +5,9 @@ package ru.list.surkovr.exercises.arrays_and_strings;
 
 public class Task5replaceSpaces {
 
-    public static void main(String[] args) {
-
-        String s = "String to replace all spaces !";
-
-        System.out.println("Result: " + replaceAllSpaces(s));
-    }
-
     // Предполагаем, что максимальное количество пробелов == длине строки
     //  Значит при замене символа пробела - тремя символами %20, получим результат не болле х3 от исх.строки
-    private static String replaceAllSpaces(String s) {
+    public static String replaceAllSpaces(String s) {
         if (s == null || s.equals("")) return null;
         char[] res = new char[3 * s.length()];
         int resIndex = 0;
@@ -27,6 +20,6 @@ public class Task5replaceSpaces {
                 res[resIndex++] = c;
             }
         }
-        return new String(res);
+        return new String(res, 0, resIndex);
     }
 }
