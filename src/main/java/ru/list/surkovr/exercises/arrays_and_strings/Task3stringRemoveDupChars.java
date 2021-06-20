@@ -1,5 +1,7 @@
 package ru.list.surkovr.exercises.arrays_and_strings;
 
+import static java.util.Objects.isNull;
+
 public class Task3stringRemoveDupChars {
 
     // Task
@@ -9,23 +11,8 @@ public class Task3stringRemoveDupChars {
     //      FOLLOW UP
     //      Write the test cases for this method.
 
-
-    public static void main(String[] args) {
-
-        String sWithDups = "String to remove duplicate characters!";
-        System.out.println(removeDupChars(sWithDups));
-
-        // Tests
-        String sWithoutDups = "String wIThouDUps!";
-        String sAllDups = "ssss";
-        String sNull = null;
-        System.out.println(removeDupChars_CharArr(sWithDups));
-        System.out.println(removeDupChars_CharArr(sWithoutDups));
-        System.out.println(removeDupChars_CharArr(sAllDups));
-        System.out.println(removeDupChars_CharArr(sNull));
-    }
-
-    private static String removeDupChars(String s) {
+    public static String removeDupChars(String s) {
+        if (isNull(s)) return null;
         int len = s.length();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < len; i++) {
@@ -44,7 +31,7 @@ public class Task3stringRemoveDupChars {
     }
 
     // Without buffer
-    private static String removeDupChars_CharArr(String s) {
+    public static String removeDupChars_CharArr(String s) {
         if (s == null || s.equals("")) return null;
         char[] sArr = s.toCharArray();
         int len = s.length();
@@ -63,11 +50,6 @@ public class Task3stringRemoveDupChars {
             }
             if (!hasBefore) sArr[currIndex++] = sArr[i];
         }
-        if (dupsCount > 0) {
-            for (int i = 0; i < dupsCount; i++) {
-                sArr[len - 1 - i] = '\u0000';
-            }
-        }
-        return new String(sArr);
+        return new String(sArr, 0, len - dupsCount);
     }
 }
