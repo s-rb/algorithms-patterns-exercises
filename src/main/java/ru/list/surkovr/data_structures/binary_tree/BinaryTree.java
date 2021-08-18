@@ -67,17 +67,3 @@ public class BinaryTree {
         return root;
     }
 }
-
-//                do {
-//                    if (data.compareTo(parent.getData()) < 0) { // меньше нуля - левое поддерево
-//                        nodeToPlace = left;
-//                    } else {
-//                        nodeToPlace = right;
-//                    }
-//                    if (nodeToPlace != null) { // Если место не пустое, то двигаемся в след цикл
-//                        parent = nodeToPlace;
-//                    }
-//                } while (nodeToPlace != null);
-//                nodeToPlace = new Node(data);
-//                nodeToPlace.setParent(parent);
-//                parent.set

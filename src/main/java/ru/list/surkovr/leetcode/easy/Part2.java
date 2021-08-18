@@ -1,13 +1,9 @@
-package leetcode.easy;
+package ru.list.surkovr.leetcode.easy;
 
 
-import java.util.Arrays;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
-public class NewPart1 {
-
-    private final Logger log = Logger.getLogger(this.getClass().getName());
+public class Part2 {
 
     /*
     Reverse integer
@@ -15,7 +11,7 @@ public class NewPart1 {
     to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
     Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
     */
-    public int reverseInt(int x) {
+    public static int reverseInt(int x) {
         int reversed = 0;
         while (x != 0) {
             try {
@@ -35,7 +31,7 @@ public class NewPart1 {
      *
      * You may assume the integer does not contain any leading zero, except the number 0 itself.
      */
-    public int[] plusOne(int[] digits) {
+    public static int[] plusOne(int[] digits) {
         int len = digits.length;
         boolean hasToAdd = true;
         for (int i = len - 1; i >= 0; i--) {
