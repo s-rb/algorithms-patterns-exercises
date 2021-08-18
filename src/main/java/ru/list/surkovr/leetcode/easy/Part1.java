@@ -1,74 +1,9 @@
-package leetcode.easy;
+package ru.list.surkovr.leetcode.easy;
 
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Part1 {
-
-    private static final Logger LOGGER = Logger.getLogger(Part1.class.getName());
-
-    public static void main(String[] args) {
-        LOGGER.log(Level.INFO, "In getTwoSum found: "
-                + Arrays.toString(getTwoSum(new int[]{3, 2, 4}, 6)));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In longestCommonPrefix found: "
-                + longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates(new int[]{1, 1, 2}));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In romanToInt found: " + romanToInt("MCMXCIV"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In romanToInt2 found: " + romanToInt2("MCMXCIV"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In isValid found: " + isValid("([)]"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In interpret found: " + interpret("(al)G(al)()()G"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In interpret2 found: " + interpret2("(al)G(al)()()G"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In removeDuplicates found: " + removeDuplicates("abbaca"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In removeDuplicates2 found: " + removeDuplicates2("abbaca"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In removeDuplicates3 found: " + removeDuplicates3("abbaca"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In maximumWealth found: " + maximumWealth(new int[][]{{1, 2, 3}, {3, 2, 1}}));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In findLengthOfLCIS found: " + findLengthOfLCIS(new int[]{1, 3, 5, 4, 7}));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In reverseWords found: " + reverseWords("Let's take LeetCode contest"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In reverseWords2 found: " + reverseWords2("Let's take LeetCode contest"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In reverseWords3 found: " + reverseWords3("Let's take LeetCode contest"));
-        LOGGER.log(Level.INFO, "--------------------------------");
-
-        LOGGER.log(Level.INFO, "In sumOfLeftLeaves found: " + sumOfLeftLeaves(
-                new TreeNode(3,
-                        new TreeNode(9), new TreeNode(20,
-                        new TreeNode(15), new TreeNode(7))
-                )));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In sumOfLeftLeaves2 found: " + sumOfLeftLeaves2(
-                new TreeNode(3,
-                        new TreeNode(9), new TreeNode(20,
-                        new TreeNode(15), new TreeNode(7))
-                )));
-        LOGGER.log(Level.INFO, "--------------------------------");
-        LOGGER.log(Level.INFO, "In reverse Integer found: " + reverseInt(123));
-        LOGGER.log(Level.INFO, "--------------------------------");
-    }
 
     /**
      * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -99,7 +34,7 @@ public class Part1 {
      * -109 <= target <= 109
      * Only one valid answer exists.
      */
-    private static int[] getTwoSum(int[] nums, int target) {
+    public static int[] getTwoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
@@ -267,7 +202,7 @@ public class Part1 {
      * s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
      * It is guaranteed that s is a valid roman numeral in the range [1, 3999].
      */
-    private static int romanToInt(String s) {
+    public static int romanToInt(String s) {
         if (s == null || s.equals("")) {
             return 0;
         }
@@ -286,7 +221,7 @@ public class Part1 {
         return res;
     }
 
-    private static Map<Character, Integer> createRomanToIntCodeMap() {
+    public static Map<Character, Integer> createRomanToIntCodeMap() {
         Map<Character, Integer> map = new HashMap<>();
         map.put('I', 1);
         map.put('V', 5);
@@ -298,7 +233,7 @@ public class Part1 {
         return map;
     }
 
-    private static int romanToInt2(String s) {
+    public static int romanToInt2(String s) {
         if (s == null || s.equals("")) {
             return 0;
         }
@@ -354,7 +289,7 @@ public class Part1 {
      * 1 <= s.length <= 104
      * s consists of parentheses only '()[]{}'.
      */
-    private static boolean isValid(String s) {
+    public static boolean isValid(String s) {
         Map<Character, Character> map = new HashMap<>();
         map.put(')', '(');
         map.put('}', '{');
@@ -411,11 +346,11 @@ public class Part1 {
      * 1 <= command.length <= 100
      * command consists of "G", "()", and/or "(al)" in some order.
      */
-    private static String interpret(String command) {
+    public static String interpret(String command) {
         return command.replaceAll("\\(\\)", "o").replaceAll("\\(al\\)", "al");
     }
 
-    private static String interpret2(String command) {
+    public static String interpret2(String command) {
         char[] res = new char[command.length()];
         int j = 0;
         for (int i = 0; i < command.length(); i++, j++) {
@@ -461,7 +396,7 @@ public class Part1 {
      * S consists only of English lowercase letters.
      */
     // Too slow. Recursive
-    private static String removeDuplicates(String s) {
+    public static String removeDuplicates(String s) {
         int length = s.length();
         for (int i = 0; i < length - 1; i++) {
             if (s.charAt(i) == s.charAt(i + 1)) {
@@ -475,7 +410,7 @@ public class Part1 {
         return s;
     }
 
-    private static String removeDuplicates2(String s) {
+    public static String removeDuplicates2(String s) {
         int length = s.length();
         for (int i = 0; i < length - 1; i++) {
             if (s.charAt(i) == s.charAt(i + 1)) {
@@ -491,7 +426,7 @@ public class Part1 {
         return s;
     }
 
-    private static String removeDuplicates3(String s) {
+    public static String removeDuplicates3(String s) {
         char[] res = new char[s.length()];
         int j = 0;
         for (int i = 0; i < s.length(); i++) {
@@ -543,7 +478,7 @@ public class Part1 {
      * 1 <= m, n <= 50
      * 1 <= accounts[i][j] <= 100
      */
-    private static int maximumWealth(int[][] accounts) {
+    public static int maximumWealth(int[][] accounts) {
         int richestMoney = 0;
         for (int[] customerAccounts : accounts) {
             int currentMoney = 0;
@@ -585,7 +520,7 @@ public class Part1 {
      * 0 <= nums.length <= 10^4
      * -10^9 <= nums[i] <= 10^9
      */
-    private static int findLengthOfLCIS(int[] nums) {
+    public static int findLengthOfLCIS(int[] nums) {
         int res = 0;
         if (nums.length == 0) {
             return res;
@@ -612,7 +547,7 @@ public class Part1 {
      * Output: "s'teL ekat edoCteeL tsetnoc"
      * Note: In the string, each word is separated by single space and there will not be any extra space in the string.
      */
-    private static String reverseWords(String s) {
+    public static String reverseWords(String s) {
         Stack<Character> stack = new Stack<>();
         char[] res = new char[s.length()];
         int resPointer = 0;
@@ -638,13 +573,13 @@ public class Part1 {
         return String.copyValueOf(res);
     }
 
-    private static String reverseWords2(String s) {
+    public static String reverseWords2(String s) {
         return Arrays.stream(s.split(" "))
                 .map(str -> new StringBuilder(str).reverse().toString())
                 .collect(Collectors.joining(" "));
     }
 
-    private static String reverseWords3(String s) {
+    public static String reverseWords3(String s) {
         int index = 0;
         char[] chars = s.toCharArray();
         int len = chars.length;
@@ -659,7 +594,7 @@ public class Part1 {
         return new String(chars);
     }
 
-    private static void reverse(char[] s, int start, int end) {
+    public static void reverse(char[] s, int start, int end) {
         while (start < end) {
             char temp = s[start];
             s[start++] = s[end];
@@ -683,7 +618,7 @@ public class Part1 {
      * <p>
      * There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
      */
-    private static int sumOfLeftLeaves(TreeNode root) {
+    public static int sumOfLeftLeaves(TreeNode root) {
         int sum = 0;
         if (Objects.isNull(root)) {
             return sum;
@@ -691,7 +626,7 @@ public class Part1 {
         return getSum(root, false, sum);
     }
 
-    private static Integer getSum(TreeNode node, boolean isLeft, Integer sum) {
+    public static Integer getSum(TreeNode node, boolean isLeft, Integer sum) {
         if (Objects.isNull(node.left) && Objects.isNull(node.right)) {
             if (isLeft) {
                 return sum += node.val;
@@ -706,7 +641,7 @@ public class Part1 {
         return sum;
     }
 
-    private static class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -722,11 +657,11 @@ public class Part1 {
         }
     }
 
-    private static int sumOfLeftLeaves2(TreeNode root) {
+    public static int sumOfLeftLeaves2(TreeNode root) {
         return calcSum(root);
     }
 
-    private static int calcSum(TreeNode node) {
+    public static int calcSum(TreeNode node) {
         if (Objects.isNull(node)) {
             return 0;
         }
@@ -746,13 +681,12 @@ public class Part1 {
     */
     public static int reverseInt(int x) {
         final String s = Integer.toUnsignedString(x);
-        char[] rev = new char[s.length()];
+        String reversed = "";
         for (int i = 0, j = s.length() - 1; i < s.length(); i++, j--) {
-            rev[j] = s.charAt(i);
+            reversed = s.charAt(i) + reversed;
         }
-        final String revStr = Arrays.toString(rev);
         try {
-            return Integer.parseUnsignedInt(revStr);
+            return Integer.parseUnsignedInt(reversed);
         } catch (Exception e) {
             return 0;
         }
