@@ -1,6 +1,6 @@
-package surkovr.linkedLists;
+package ru.list.surkovr.exercises.linkedLists;
 
-import surkovr.linkedLists.singleLinkedListImpl.Node;
+import ru.list.surkovr.exercises.linkedLists.singleLinkedListImpl.Node;
 
 import java.util.Objects;
 

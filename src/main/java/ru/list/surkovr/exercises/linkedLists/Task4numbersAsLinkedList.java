@@ -1,4 +1,4 @@
-package surkovr.linkedLists;
+package ru.list.surkovr.exercises.linkedLists;
 
 // You have two numbers represented by a linked list, where each node contains a single
 //  digit. The digits are stored in reverse order, such that the 1’s digit is at the head of
@@ -12,7 +12,8 @@ package surkovr.linkedLists;
 // каждая цифра. Элементы располагаются в обратном порядке.
 // Написать функцию, которая добавляет два цисла и возвращает сумму чисел как линкед лист.
 
-import surkovr.linkedLists.singleLinkedListImpl.Node;
+
+import ru.list.surkovr.exercises.linkedLists.singleLinkedListImpl.Node;
 
 public class Task4numbersAsLinkedList {
 

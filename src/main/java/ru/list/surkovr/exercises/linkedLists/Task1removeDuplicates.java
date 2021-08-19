@@ -1,11 +1,11 @@
-package surkovr.linkedLists;
+package ru.list.surkovr.exercises.linkedLists;
 
 // Task
 // Write code to remove duplicates from an unsorted linked list.
 //  FOLLOW UP
 //  How would you solve this problem if a temporary bu#er is not allowed?􀀁
 
-import surkovr.linkedLists.singleLinkedListImpl.Node;
+import ru.list.surkovr.exercises.linkedLists.singleLinkedListImpl.Node;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,21 +14,7 @@ import java.util.Random;
 
 public class Task1removeDuplicates {
 
-    public static void main(String[] args) {
-        Node list = new Node(1);
-        addSomeValues(list);
-        System.out.println(list);
-        list = removeDuplicates(list);
-        System.out.println(list);
-        System.out.println("----------------------\n2 impl:");
-        list = new Node(1);
-        addSomeValues(list);
-        System.out.println(list);
-        list = removeDuplicates_2impl(list);
-        System.out.println(list);
-    }
-
-    private static Node removeDuplicates(Node list) {
+    public static Node removeDuplicates(Node list) {
         if (list == null) return null;
         Map<Integer, Integer> dataCounts = new HashMap<>();
         dataCounts.put(list.getData(), 1);
@@ -52,7 +38,7 @@ public class Task1removeDuplicates {
         return list;
     }
 
-    private static Node removeDuplicates_2impl(Node list) {
+    public static Node removeDuplicates_2impl(Node list) {
         Node head = Optional.ofNullable(list).orElseThrow();
         Node previous = head;
         Node current = head.getNext();
@@ -75,7 +61,7 @@ public class Task1removeDuplicates {
         return head;
     }
 
-    static void addSomeValues(Node list) {
+    public static void addSomeValues(Node list) {
         int counter = 0;
         for (int i = 0; i < new Random().nextInt(100) + 10; i++) {
             list.appendToTail(new Random().nextInt(10));
