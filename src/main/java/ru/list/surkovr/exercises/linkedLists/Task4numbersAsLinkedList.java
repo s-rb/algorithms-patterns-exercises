@@ -17,27 +17,12 @@ import ru.list.surkovr.exercises.linkedLists.singleLinkedListImpl.Node;
 
 public class Task4numbersAsLinkedList {
 
-    public static void main(String[] args) {
-
-        Node number1 = new Node(3);
-        number1.appendToTail(1);
-        number1.appendToTail(5);
-
-        Node number2 = new Node(5);
-        number2.appendToTail(9);
-        number2.appendToTail(2);
-
-        Node result = getSumNode(number1, number2);
-        System.out.println("Исходные ноды: " + number1 + ", " + number2);
-        System.out.println("Сумма: " + result);
-    }
-
-    private static Node getSumNode(Node number1, Node number2) {
+    public static Node getSumNode(Node number1, Node number2) {
         if (number1 == null && number2 == null) return null;
         return calculateSumNodes(number1, number2, 0);
     }
 
-    private static Node calculateSumNodes(Node num1, Node num2, int valueInMemory) {
+    public static Node calculateSumNodes(Node num1, Node num2, int valueInMemory) {
         if (num1 == null && num2 == null) return null;
         Node res = new Node(valueInMemory);
         int currentValue = valueInMemory;
