@@ -1,16 +1,8 @@
 package ru.list.surkovr.leetcode.easy;
 
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -350,5 +342,51 @@ public class Part3Test {
         assertThat(search(new int[]{2, 5}, 5)).isEqualTo(1);
     }
 
+    int[] monthDays = getMonthDays();
 
+    public int daysBetweenDates(String date1, String date2) {
+        return Math.abs(daysFrom1900(date1) - daysFrom1900(date2));
+    }
+
+    public int daysFrom1900(String date) {
+        String[] split = date.split("-");
+        int year = Integer.parseInt(split[0]);
+        int month = Integer.parseInt(split[1]);
+        int day = Integer.parseInt(split[2]);
+
+        int years = year - 1900 - 1;
+
+        return (years * 365 + years / 4)
+                + (monthDays[month - 1] + (month > 2 && isLeap(year) ? 1 : 0))
+                + day;
+    }
+
+    private int[] getMonthDays() {
+        int[] monthDays = new int[13];
+        monthDays[0] = 0;
+        monthDays[1] = 31;
+        monthDays[2] = monthDays[1] + 28;
+        monthDays[3] = monthDays[2] + 31;
+        monthDays[4] = monthDays[3] + 30;
+        monthDays[5] = monthDays[4] + 31;
+        monthDays[6] = monthDays[5] + 30;
+        monthDays[7] = monthDays[6] + 31;
+        monthDays[8] = monthDays[7] + 31;
+        monthDays[9] = monthDays[8] + 30;
+        monthDays[10] = monthDays[9] + 31;
+        monthDays[11] = monthDays[10] + 30;
+        monthDays[12] = monthDays[11] + 31;
+        return monthDays;
+    }
+
+    private boolean isLeap(int year) {
+        return (year % 100 != 0 && year % 4 == 0) || (year % 100 == 0 && year % 400 == 0);
+    }
+
+    @Test
+    void testDaysBetweenDates() {
+        assertThat(daysBetweenDates("2019-06-29", "2019-06-30")).isEqualTo(1);
+        assertThat(daysBetweenDates("2020-01-15", "2019-12-31")).isEqualTo(15);
+        assertThat(daysBetweenDates("2074-09-12", "1983-01-08")).isEqualTo(33485);
+    }
 }
