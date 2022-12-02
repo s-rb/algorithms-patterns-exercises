@@ -190,13 +190,12 @@ public class Part3Test {
 
     /**
      * Given a balanced parentheses string s, return the score of the string.
-     *
+     * <p>
      * The score of a balanced parentheses string is based on the following rule:
-     *
+     * <p>
      * "()" has score 1.
      * AB has score A + B, where A and B are balanced parentheses strings.
      * (A) has score 2 * A, where A is a balanced parentheses string.
-     *
      */
     public int scoreOfParentheses(String s) {
         int res = 0;
@@ -283,4 +282,73 @@ public class Part3Test {
         assertThat(toGoatLatin("Each word consists of lowercase and uppercase letters only"))
                 .isEqualTo("Eachmaa ordwmaaa onsistscmaaaa ofmaaaaa owercaselmaaaaaa andmaaaaaaa uppercasemaaaaaaaa etterslmaaaaaaaaa onlymaaaaaaaaaa");
     }
+
+    public String shortestCompletingWord(String licensePlate, String[] words) {
+        int[][] scores = new int[words.length][licensePlate.length()];
+        char[] licenceChars = licensePlate.toLowerCase().toCharArray();
+        for (int i = 0; i < words.length; i++) {
+            char[] wordChars = words[i].toCharArray();
+            for (int j = 0; j < wordChars.length; j++) {
+                char ch = wordChars[j];
+                for (int k = 0; k < licenceChars.length; k++) {
+                    if (scores[i][k] == 1) continue;
+                    if (licenceChars[k] == ch) {
+                        scores[i][k] = 1;
+                        break;
+                    }
+                }
+            }
+        }
+
+        int highestScore = 0;
+        int highestScoreIdx = 0;
+        for (int i = 0; i < words.length; i++) {
+            int sum = 0;
+            for (int k = 0; k < scores[i].length; k++) {
+                sum += scores[i][k];
+            }
+            if (sum < highestScore) continue;
+
+            if (sum == highestScore && words[highestScoreIdx].length() <= words[i].length()) continue;
+
+            highestScore = sum;
+            highestScoreIdx = i;
+        }
+
+        return words[highestScoreIdx];
+    }
+
+    @Test
+    void testShortestCompletingWord() {
+        assertThat(shortestCompletingWord("1s3 PSt", new String[]{"step", "steps", "stripe", "stepple"}))
+                .isEqualTo("steps");
+        assertThat(shortestCompletingWord("1s3 456", new String[]{"looks", "pest", "stew", "show"}))
+                .isEqualTo("pest");
+    }
+
+    public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start <= end) {
+            int idx = (end + start) / 2;
+            int val = nums[idx];
+            if (val == target) return idx;
+            if (val < target) {
+                start = ++idx;
+            } else {
+                end = --idx;
+            }
+        }
+        return -1;
+    }
+
+    @Test
+    void doBinarySearchTest() {
+        assertThat(search(new int[]{-1, 0, 3, 5, 9, 12}, 9)).isEqualTo(4);
+        assertThat(search(new int[]{-1, 0, 3, 5, 9, 12}, 2)).isEqualTo(-1);
+        assertThat(search(new int[]{2, 5}, 5)).isEqualTo(1);
+    }
+
+
 }
