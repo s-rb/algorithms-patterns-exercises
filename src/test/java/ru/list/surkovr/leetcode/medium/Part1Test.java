@@ -48,4 +48,22 @@ public class Part1Test {
         Assertions.assertThat(itr.hasNext()).isTrue(); 
         Assertions.assertThat(itr.next()).isEqualTo("bz");
     }
+
+    @Test
+    void numTilePossibilities() {
+        final int res = Part1.numTilePossibilities("AAB");
+        Assertions.assertThat(res).isEqualTo(8);
+    }
+
+    @Test
+    void numTilePossibilities2() {
+        final int res = Part1.numTilePossibilities("AAABBC");
+        Assertions.assertThat(res).isEqualTo(188);
+    }
+
+    @Test
+    void numTilePossibilities2test() {
+        final int res = Part1.numTilePossibilities2("AAABBC");
+        Assertions.assertThat(res).isEqualTo(188);
+    }
 }

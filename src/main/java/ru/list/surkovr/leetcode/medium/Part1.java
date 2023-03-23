@@ -2,11 +2,70 @@ package ru.list.surkovr.leetcode.medium;
 
 import org.assertj.core.api.Assertions;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class Part1 {
+
+    /**
+     * 1079. Letter Tile Possibilities
+     * Medium
+     * 2.2K
+     * 60
+     * Companies
+     * You have n  tiles, where each tile has one letter tiles[i] printed on it.
+     *
+     * Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: tiles = "AAB"
+     * Output: 8
+     * Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+     * Example 2:
+     *
+     * Input: tiles = "AAABBC"
+     * Output: 188
+     * Example 3:
+     *
+     * Input: tiles = "V"
+     * Output: 1
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= tiles.length <= 7
+     * tiles consists of uppercase English letters.
+     */
+    private static Set<String> set = new HashSet<>(); // to avoid duplicates
+
+    public static int numTilePossibilities(String tiles) {
+        if (tiles == null || tiles.isBlank()) return -1;
+        if (tiles.length() == 1) return 1;
+        boolean[] visited = new boolean[tiles.length()];
+        backtrack(tiles, visited, new StringBuilder());
+        return set.size();
+    }
+
+    private static void backtrack(String src, boolean[] visited, StringBuilder sb) {
+        if (sb.length() > 0) {
+            final String str = sb.toString();
+            if (set.contains(str)) {
+                return;
+            } else {
+                set.add(str);
+            }
+        }
+
+        for (int i = 0; i < src.length(); i++) {
+            if (visited[i]) continue;
+            visited[i] = true;
+            backtrack(src, visited, sb.append(src.charAt(i)));
+            visited[i] = false;
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
 
     /**
      * Design the CombinationIterator class:
@@ -98,6 +157,29 @@ public class Part1 {
                 }
                 if (sb.length() > 0) queue.add(sb.toString());
             }
+        }
+    }
+
+    private static int count = 0;
+
+    public static int numTilePossibilities2(String tiles) {
+        if (tiles == null || tiles.isEmpty()) return 0;
+        if (tiles.length() == 1) return 1;
+        char[] chars = tiles.toCharArray();
+        Arrays.sort(chars);
+        boolean[] visits = new boolean[tiles.length()];
+        backtrack(chars, visits);
+        return count;
+    }
+
+    private static void backtrack(char[] chars, boolean[] visits) {
+        for (int i = 0; i < chars.length; i++) {
+            if (visits[i]) continue;
+            count++;
+            visits[i] = true;
+            backtrack(chars, visits);
+            visits[i] = false;
+            while (i != chars.length - 1 && chars[i+1] == chars[i]) i++;
         }
     }
 }
