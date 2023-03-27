@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.util.Lists.list;
@@ -85,5 +86,21 @@ public class Part1Test {
                         list(3, 2, 1)
                         )
                 );
+    }
+
+    @Test
+    void letterCasePermutation() {
+        final List<String> res = Part1.letterCasePermutation("a1b2");
+        Assertions.assertThat(res).isNotNull().isNotEmpty()
+                .containsExactlyInAnyOrderElementsOf(Arrays.asList("a1b2","a1B2","A1b2","A1B2"));
+    }
+
+    @Test
+    void partition() {
+        final List<List<String>> res = Part1.partition("aab");
+        Assertions.assertThat(res).isNotNull().isNotEmpty()
+                .containsExactlyInAnyOrderElementsOf(List.of(
+                        List.of("a","a","b"),List.of("aa","b")
+                ));
     }
 }

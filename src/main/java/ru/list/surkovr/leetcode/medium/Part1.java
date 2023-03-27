@@ -219,4 +219,92 @@ public class Part1 {
         Backtracking.backtrack(nums, new boolean[nums.length], new ArrayList<>(), result);
         return result;
     }
+
+    /**
+     * 784. Letter Case Permutation
+     * Medium
+     * 4.2K
+     * 151
+     * Companies
+     * Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
+     *
+     * Return a list of all possible strings we could create. Return the output in any order.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: s = "a1b2"
+     * Output: ["a1b2","a1B2","A1b2","A1B2"]
+     * Example 2:
+     *
+     * Input: s = "3z4"
+     * Output: ["3z4","3Z4"]
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= s.length <= 12
+     * s consists of lowercase English letters, uppercase English letters, and digits.
+     */
+    public static List<String> letterCasePermutation(String s) {
+        Set<String> res = new HashSet<>();
+        backtrack(s.toCharArray(), new StringBuilder(), res);
+        return new ArrayList<>(res);
+    }
+
+    private static void backtrack(char[] src, StringBuilder sb, Set<String> res) {
+        if (sb.length() == src.length) {
+            res.add(sb.toString());
+            return;
+        }
+
+        int idx = sb.length();
+        sb.append(Character.toLowerCase(src[idx]));
+        backtrack(src, sb, res);
+        sb.deleteCharAt(sb.length() - 1);
+
+        sb.append(Character.toUpperCase(src[idx]));
+        backtrack(src, sb, res);
+        sb.deleteCharAt(sb.length() - 1);
+    }
+
+    /**
+     *
+     */
+    public static List<List<String>> partition(String s) {
+        int len = s.length();
+        boolean[][] isPalindromeArr = new boolean[len+1][len+1];
+        String[][] subs = new String[len+1][len+1];
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j <= len; j++) {
+                subs[i][j] = s.substring(i, j);
+                isPalindromeArr[i][j] = isPalindrome(subs[i][j]);
+            }
+        }
+        List<List<String>> res = new ArrayList<>();
+        backtrack(0, len, isPalindromeArr, subs, res, new ArrayList<>());
+        return res;
+    }
+
+    private static void backtrack(int index, int len, boolean[][] isPalin, String[][] subs, List<List<String>> res, List<String> list) {
+        if (index == len) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for (int i = index; i <= len; i++) {
+            if (!isPalin[index][i]) continue;
+            list.add(subs[index][i]);
+            backtrack(i, len, isPalin, subs, res, list);
+            list.remove(list.size() - 1);
+        }
+    }
+
+    private static boolean isPalindrome(String s) {
+        if (s.length() < 2) return true;
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) return false;
+        }
+        return true;
+    }
 }
