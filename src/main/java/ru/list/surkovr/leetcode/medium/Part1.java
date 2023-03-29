@@ -307,4 +307,126 @@ public class Part1 {
         }
         return true;
     }
+
+    /**
+     * 2044. Count Number of Maximum Bitwise-OR Subsets
+     * Medium
+     * 480
+     * 15
+     * Companies
+     * Given an integer array nums, find the maximum possible bitwise OR of a subset of nums and return the number of different non-empty subsets with the maximum bitwise OR.
+     *
+     * An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b. Two subsets are considered different if the indices of the elements chosen are different.
+     *
+     * The bitwise OR of an array a is equal to a[0] OR a[1] OR ... OR a[a.length - 1] (0-indexed).
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: nums = [3,1]
+     * Output: 2
+     * Explanation: The maximum possible bitwise OR of a subset is 3. There are 2 subsets with a bitwise OR of 3:
+     * - [3]
+     * - [3,1]
+     * Example 2:
+     *
+     * Input: nums = [2,2,2]
+     * Output: 7
+     * Explanation: All non-empty subsets of [2,2,2] have a bitwise OR of 2. There are 23 - 1 = 7 total subsets.
+     * Example 3:
+     *
+     * Input: nums = [3,2,1,5]
+     * Output: 6
+     * Explanation: The maximum possible bitwise OR of a subset is 7. There are 6 subsets with a bitwise OR of 7:
+     * - [3,5]
+     * - [3,1,5]
+     * - [3,2,5]
+     * - [3,2,1,5]
+     * - [2,5]
+     * - [2,1,5]
+     *
+     *
+     * Constraints:
+     *
+     * 1 <= nums.length <= 16
+     * 1 <= nums[i] <= 105
+     */
+    public static int countMaxOrSubsets(int[] nums) {
+        SortedMap<Integer, List<List<Integer>>> map = new TreeMap<>();
+        backtrack(0, nums, nums.length, map, new ArrayList<>());
+        return map.get(map.lastKey()).size();
+    }
+
+    private static void backtrack(int idx, int[] nums, int len,
+                           SortedMap<Integer, List<List<Integer>>> map,
+                           List<Integer> list
+    )
+    {
+        if (list.size() == 1) {
+            var temp = map.getOrDefault(list.get(0), new ArrayList<>());
+            temp.add(new ArrayList(list));
+            map.put(list.get(0), temp);
+        } else if (list.size() > 1) {
+            var num = list.stream().reduce((o1, o2) -> o1 | o2).get();
+            var temp = map.getOrDefault(num, new ArrayList<>());
+            temp.add(new ArrayList(list));
+            map.put(num, temp);
+        }
+
+        for (int i = idx; i < len; i++) {
+            list.add(nums[i]);
+            backtrack(i+1, nums, len, map, list);
+            list.remove(list.size() - 1);
+        }
+    }
+
+    /**
+     * 1291. Sequential Digits
+     * Medium
+     * 1.9K
+     * 107
+     * Companies
+     * An integer has sequential digits if and only if each digit in the number is one more than the previous digit.
+     *
+     * Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: low = 100, high = 300
+     * Output: [123,234]
+     * Example 2:
+     *
+     * Input: low = 1000, high = 13000
+     * Output: [1234,2345,3456,4567,5678,6789,12345]
+     *
+     *
+     * Constraints:
+     *
+     * 10 <= low <= high <= 10^9
+     */
+    public static List<Integer> sequentialDigits(int low, int high) {
+        // 12, 23, 34, 45, 56, 67, 78, 89 - t=8, incr=11
+        // 123, 234, 345, 456, 567, 678, 789 - t=7, incr=111
+        int start = 1;
+        int times = 8;
+        int current = 1;
+        int incr = 11;
+
+        List<Integer> result = new ArrayList<>();
+        while (current <= high) {
+            for (int i = 0; i < times; i++) {
+                current = current + incr;
+                if (current >= low && current <= high) result.add(current);
+            }
+
+            incr = 10 * incr + 1; // 11, 111, 1111...
+            start = start * 10 + 10 - times; // 1, 12, 123..
+            times--; // 8, 7, 6
+            current = start;
+        }
+        return result;
+    }
 }

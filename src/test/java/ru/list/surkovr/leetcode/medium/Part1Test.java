@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.util.Lists.list;
-import static ru.list.surkovr.leetcode.medium.Part1.*;
+import static ru.list.surkovr.leetcode.medium.Part1.CombinationIterator;
+import static ru.list.surkovr.leetcode.medium.Part1.CombinationIterator2;
 
 
 public class Part1Test {
@@ -102,5 +103,19 @@ public class Part1Test {
                 .containsExactlyInAnyOrderElementsOf(List.of(
                         List.of("a","a","b"),List.of("aa","b")
                 ));
+    }
+
+    @Test
+    void countMaxOrSubsets() {
+        final int res = Part1.countMaxOrSubsets(new int[]{3, 1});
+        Assertions.assertThat(res).isEqualTo(2);
+    }
+
+    @Test
+    void sequentialDigits() {
+        Assertions.assertThat(Part1.sequentialDigits(100, 300)).isNotNull().isNotEmpty()
+            .containsExactlyInAnyOrderElementsOf(List.of(123, 234));
+        Assertions.assertThat(Part1.sequentialDigits(1000, 13000)).isNotNull().isNotEmpty()
+            .containsExactlyInAnyOrderElementsOf(List.of(1234,2345,3456,4567,5678,6789,12345));
     }
 }
