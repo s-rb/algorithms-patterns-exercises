@@ -429,4 +429,24 @@ public class Part1 {
         }
         return result;
     }
+
+    /**
+     *
+     */
+    public static List<Long> maximumEvenSplit(long finalSum) {
+        List<Long> res = new ArrayList<>();
+        if (finalSum < 2L || finalSum % 2L != 0L) return res;
+        long i = 2L;
+        while (finalSum != 0L) {
+            if (i > finalSum) {
+                long last = res.remove(res.size()-1);
+                finalSum += last;
+                i = finalSum;
+            }
+            res.add(i);
+            finalSum -= i;
+            i += 2L;
+        }
+        return res;
+    }
 }

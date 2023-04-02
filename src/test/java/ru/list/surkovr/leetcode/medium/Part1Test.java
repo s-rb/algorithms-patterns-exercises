@@ -118,4 +118,9 @@ public class Part1Test {
         Assertions.assertThat(Part1.sequentialDigits(1000, 13000)).isNotNull().isNotEmpty()
             .containsExactlyInAnyOrderElementsOf(List.of(1234,2345,3456,4567,5678,6789,12345));
     }
+
+    @Test
+    void maximumEvenSplit() {
+        Part1.maximumEvenSplit(28);
+    }
 }
