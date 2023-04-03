@@ -123,4 +123,9 @@ public class Part1Test {
     void maximumEvenSplit() {
         Part1.maximumEvenSplit(28);
     }
+
+    @Test
+    void countArrangement() {
+        Part1.countArrangement(2);
+    }
 }

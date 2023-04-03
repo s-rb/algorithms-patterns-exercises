@@ -449,4 +449,31 @@ public class Part1 {
         }
         return res;
     }
+
+    static Integer res = 0;
+
+    public static int countArrangement(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        boolean[] visited = new boolean[n];
+        backtrack(n, visited, new ArrayList<>());
+        return res;
+    }
+
+    private static void backtrack(int num, boolean[] visited, List<Integer> list) {
+        if (list.size() == num) {
+            res++;
+            return;
+        }
+
+        for (int i = 1; i <= num; i++) {
+            if (visited[i-1]) continue;
+            if (i % (list.size()+1) != 0 && (list.size()+1) % i != 0) return;
+            visited[i-1] = true;
+            list.add(i);
+            backtrack(num, visited, list);
+            visited[i-1] = false;
+            list.remove(list.size()-1);
+        }
+    }
 }
