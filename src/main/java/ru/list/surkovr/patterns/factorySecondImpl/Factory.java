@@ -22,14 +22,12 @@ public class Factory {
     class ConcreteWriter extends AbstractWriter {
         @Override
         public void write() {
-            // write somethinge to file
         }
     }
 
     class XMLWriter extends AbstractWriter {
         @Override
         public void write() {
-            // write to XML файл
         }
     }
 }

@@ -3,13 +3,6 @@ package ru.list.surkovr.patterns.adapter;
 import java.util.Date;
 import java.util.List;
 
-/**
-//java.util.Arrays.asList();
-//java.io.InputStreamReader(InputStream);
-//java.io.OutputStreamWriter(OutputStream);
-
- */
-
 public class CustomerDataObject implements DataObject {
 
     private Customer customer;

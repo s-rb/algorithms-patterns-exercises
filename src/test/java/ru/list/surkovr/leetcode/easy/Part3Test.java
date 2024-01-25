@@ -207,15 +207,6 @@ public class Part3Test {
         }
         return res;
     }
-//
-//    public int scoreOfParentheses2(String s) {
-//        int res = 0;
-//        char[] chars = s.toCharArray();
-//
-//        for (char c : chars) {
-//
-//        }
-//    }
 
     @Test
     void scoreOfParenthesesTest() {

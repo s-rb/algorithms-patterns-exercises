@@ -6,29 +6,7 @@ public class Week6 {
 
     public static int month[];
 
-//    public static void main (String[] args) throws java.lang.Exception {
-//        Scanner in  = new Scanner(System.in);
-//
-//        month = new int[15];
-//
-//        String s = in.nextLine();
-//
-//        StringTokenizer str = new StringTokenizer(s, "- ");
-//
-//        int d1 = Integer.parseInt(str.nextToken());
-//        int m1 = Integer.parseInt(str.nextToken());
-//        int y1 = Integer.parseInt(str.nextToken());
-//        int d2 = Integer.parseInt(str.nextToken());
-//        int m2 = Integer.parseInt(str.nextToken());
-//        int y2 = Integer.parseInt(str.nextToken());
-//
-//        int result = findPrimeDates(d1, m1, y1, d2, m2, y2);
-//        System.out.println(result);
-//    }
-
     public static void main(String[] args) {
-//        formingMagicSquare(List.of(List.of(4, 9, 2), List.of(3, 5, 7), List.of(8, 1, 5)));
-//        isMagic(List.of(List.of(8, 3, 4), List.of(1, 5, 9), List.of(6, 7, 2)), 15);
         System.out.println(counterGame(2));
         System.out.println(counterGame(1900082075));
         System.out.println(counterGame(1073741824));

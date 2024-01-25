@@ -27,24 +27,24 @@ Implementation of some popular design patterns:
 * [Singleton](src/main/java/ru/list/surkovr/patterns/singleton)
 * [Adapter](src/main/java/ru/list/surkovr/patterns/adapter)
 
-## Решение задач из книги Cracking the coding interview.
-* [Содержит ли строка уникальные символы](src/main/java/ru/list/surkovr/exercises/arrays_and_strings/Task1stringUniqueChars.java)
+## Solving problems from the book Cracking the coding interview.
+* [Does the string contain unique characters](src/main/java/ru/list/surkovr/exercises/arrays_and_strings/Task1stringUniqueChars.java)
 
 
 ```/*
-Сложность некоторых запросов:
-- Поиск минимального значения в массиве чисел длиной n, который отсортирован по возрастанию.
-  ==>  O(1), т.к. известно что мин.значение в начале и обратиться можем по индексу
+Complexity of some queries:
+- Search for the minimum value in an array of numbers of length n, which is sorted in ascending order.
+  ==> O(1), because we know that the minimum value is at the beginning and we can access it by index
 
-- Расчёт среднего значения в массиве чисел длиной n.
-  ==> O(n), так как нужно обратиться к каждому числу, чтобы сложить и затем в одно действие разделить на общее количество
+- Calculation of the average value in an array of numbers of length n.
+  ==> O(n), since you need to access each number to add and then divide by the total in one step
 
-- Получение длины массива размером n.
-  ==> O(1) массивы при создании имеют известный размер, который не меняется
+- Getting the length of an array of size n.
+  ==> O(1) arrays when created have a known size that does not change
 
-- Задан список из n объектов, каждый из которых представляет собой банковский счёт - ArrayList<Bill>.
-  И есть класс и метод, с помощью которых можно получить общую сумму транзакций между первым и вторым счётом -
+- Given a list of n objects, each of which represents a bank account - ArrayList<Bill>.
+  And there is a class and method with which you can get the total amount of transactions between the first and second account -
   TransactionsCalculator.calculateTotalSum(Bill sourceBill, Bill destinationBill).
-  Алгоритм должен, используя этот метод, посчитать общую сумму переводов между всеми счетами из списка.
-  ==> Попарно сложить все данные между каждой парой счетов - потребуется (n-1)! операций. Сложность составит O(n)
+  The algorithm should, using this method, calculate the total amount of transfers between all accounts from the list.
+  ==> Add all the data between each pair of accounts in pairs - you will need (n-1)! operations. The complexity will be O(n)
   */

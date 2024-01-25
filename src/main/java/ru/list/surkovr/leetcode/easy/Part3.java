@@ -10,19 +10,6 @@ import java.util.stream.StreamSupport;
 public class Part3 {
 
     public static void main(String[] args) {
-//        int[] nums = {0, 1, 0, 3, 12};
-//        moveZeroes(nums);
-//        System.out.println(Arrays.toString(nums));
-
-//        System.out.println(smallestNumber(4099));
-//        System.out.println(smallestNumber(1000000000000000L));
-//        System.out.println(mySqrt(8));
-//        System.out.println(nextGreaterElement(230241));
-//        System.out.println(nextGreaterElement(12222333));
-//        System.out.println(subarraySum(new int[]{1, -1, 0}, 0));
-//        System.out.println(minimumCost(new int[]{6,5,7,9,2,2}));
-//        System.out.println(digitCount("1210"));
-//        System.out.println(findWords(new String[]{"Hello","Alaska","Dad","Peace"}));
         System.out.println(lastStoneWeight(new int[]{1, 2, 3, 4}));
     }
 
