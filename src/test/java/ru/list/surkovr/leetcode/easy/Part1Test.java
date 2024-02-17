@@ -2,6 +2,8 @@ package ru.list.surkovr.leetcode.easy;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.list.surkovr.leetcode.easy.Part1.*;
 
@@ -134,5 +136,11 @@ public class Part1Test {
     public void reverseIntTest() {
         int actual = reverseInt(123);
         assertThat(actual).isEqualTo(321);
+    }
+
+    @Test
+    public void minOperationsTest() {
+        int res = minOperations(List.of(3, 1, 5, 4, 2), 2);
+        assertThat(res).isEqualTo(4);
     }
 }
