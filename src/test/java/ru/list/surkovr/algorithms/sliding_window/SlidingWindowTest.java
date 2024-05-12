@@ -23,4 +23,10 @@ public class SlidingWindowTest {
         Assertions.assertThat(SlidingWindow.countGoodSubstrings3("aababcabc")).isEqualTo(4);
         Assertions.assertThat(SlidingWindow.countGoodSubstrings3("owuxoelszb")).isEqualTo(8);
     }
+
+    @Test
+    void longestSubarray() {
+        Assertions.assertThat(SlidingWindow.longestSubarray(new int[]{1,1,0,1})).isEqualTo(3);
+        Assertions.assertThat(SlidingWindow.longestSubarray(new int[]{0,1,1,1,0,1,1,0,1})).isEqualTo(5);
+    }
 }
