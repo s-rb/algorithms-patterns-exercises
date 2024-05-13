@@ -16,4 +16,11 @@ class DepthFirstSearchTest {
 
         Assertions.assertThat(DepthFirstSearch.inorderTraversal(root)).isEqualTo(List.of(1,3,2));
     }
+
+    @Test
+    void eventualSafeNodes() {
+        Assertions.assertThat(DepthFirstSearch.eventualSafeNodes(
+                new int[][] {{1,2},{2,3},{5},{0},{5},{},{}}))
+                .isEqualTo(List.of(2,4,5,6));
+    }
 }
