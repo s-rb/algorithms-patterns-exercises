@@ -46,4 +46,21 @@ class BreadthFirstSearchTest {
         BreadthFirstSearch.TreeNode found = BreadthFirstSearch.getTargetCopyRecursive(original, copy, target);
         Assertions.assertThat(found == copy.right).isTrue();
     }
+
+    @Test
+    void sumEvenGrandparent() {
+        BreadthFirstSearch.TreeNode root = new BreadthFirstSearch.TreeNode(6);
+        root.left = new BreadthFirstSearch.TreeNode(7);
+        root.right = new BreadthFirstSearch.TreeNode(8);
+        root.left.left = new BreadthFirstSearch.TreeNode(2);
+        root.left.left.left = new BreadthFirstSearch.TreeNode(9);
+        root.left.right = new BreadthFirstSearch.TreeNode(7);
+        root.left.right.left = new BreadthFirstSearch.TreeNode(1);
+        root.left.right.right = new BreadthFirstSearch.TreeNode(4);
+        root.right.left = new BreadthFirstSearch.TreeNode(1);
+        root.right.right = new BreadthFirstSearch.TreeNode(3);
+        root.right.right.right = new BreadthFirstSearch.TreeNode(5);
+
+        Assertions.assertThat(BreadthFirstSearch.sumEvenGrandparent(root)).isEqualTo(18);
+    }
 }

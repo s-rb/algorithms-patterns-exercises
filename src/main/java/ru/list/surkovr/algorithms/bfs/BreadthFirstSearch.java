@@ -1,5 +1,7 @@
 package ru.list.surkovr.algorithms.bfs;
 
+import ru.list.surkovr.exercises.other.Tree;
+
 import java.util.LinkedList;
 
 public class BreadthFirstSearch {
@@ -74,6 +76,60 @@ public class BreadthFirstSearch {
             if (found != null) return found;
         }
         return null;
+    }
+
+    /**
+     * 1315. Sum of Nodes with Even-Valued Grandparent
+     * Medium
+     * Topics
+     * Companies
+     * Hint
+     * Given the root of a binary tree, return the sum of values of nodes with an even-valued grandparent. If there are no nodes with an even-valued grandparent, return 0.
+     *
+     * A grandparent of a node is the parent of its parent if it exists.
+     *
+     *
+     *
+     * Example 1:
+     *
+     *
+     * Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
+     * Output: 18
+     * Explanation: The red nodes are the nodes with even-value grandparent while the blue nodes are the even-value grandparents.
+     * Example 2:
+     *
+     *
+     * Input: root = [1]
+     * Output: 0
+     *
+     *
+     * Constraints:
+     *
+     * The number of nodes in the tree is in the range [1, 104].
+     * 1 <= Node.val <= 100
+     */
+    private static int SUM = 0;
+
+    public static int sumEvenGrandparent(TreeNode root) {
+        if (root == null || (root.left == null && root.right == null)) return 0;
+        TreeNode left = root.left;
+        if (left != null) {
+            bfs(left.left, left, root);
+            bfs(left.right, left, root);
+        }
+        TreeNode right = root.right;
+        if (right != null) {
+            bfs(right.left, right, root);
+            bfs(right.right, right, root);
+        }
+        return SUM;
+    }
+
+    private static void bfs(TreeNode current, TreeNode parent, TreeNode grandparent) {
+        if (current == null) return;
+        if (grandparent.val % 2 == 0) SUM += current.val;
+        bfs(current.left, current, parent);
+        bfs(current.right, current, parent);
     }
 
     public static class TreeNode {
