@@ -29,4 +29,27 @@ class TreeTest {
 
         Assertions.assertThat(Tree.rangeSumBST(node, 6, 10)).isEqualTo(23);
     }
+
+    @Test
+    void bstToGst() {
+        Tree.TreeNode node = new Tree.TreeNode(4);
+        Tree.TreeNode node1 = new Tree.TreeNode(1);
+        Tree.TreeNode node0 = new Tree.TreeNode(0);
+        Tree.TreeNode node2 = new Tree.TreeNode(2);
+        Tree.TreeNode node3 = new Tree.TreeNode(3);
+        Tree.TreeNode node6 = new Tree.TreeNode(6);
+        Tree.TreeNode node5 = new Tree.TreeNode(5);
+        Tree.TreeNode node7 = new Tree.TreeNode(7);
+        Tree.TreeNode node8 = new Tree.TreeNode(8);
+        node.left = node1;
+        node1.left = node0;
+        node1.right = node2;
+        node2.right = node3;
+        node.right = node6;
+        node6.left = node5;
+        node6.right = node7;
+        node7.right = node8;
+
+        Tree.TreeNode treeNode = Tree.bstToGst(node);
+    }
 }
