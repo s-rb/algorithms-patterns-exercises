@@ -1,4 +1,4 @@
-package ru.list.surkovr.data_structures.suffix_tree;
+package ru.list.surkovr.data_structures.tree.suffix_tree;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ru.list.surkovr.data_structures.binary_tree;
+package ru.list.surkovr.data_structures.tree.binary_tree;
 
 import java.util.ArrayList;
 import java.util.List;

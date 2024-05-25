@@ -1,8 +1,8 @@
 package ru.list.surkovr.data_structures;
 
 import org.junit.jupiter.api.Test;
-import ru.list.surkovr.data_structures.binary_tree.BinaryTree;
-import ru.list.surkovr.data_structures.binary_tree.Node;
+import ru.list.surkovr.data_structures.tree.binary_tree.BinaryTree;
+import ru.list.surkovr.data_structures.tree.binary_tree.Node;
 
 import java.util.List;
 
