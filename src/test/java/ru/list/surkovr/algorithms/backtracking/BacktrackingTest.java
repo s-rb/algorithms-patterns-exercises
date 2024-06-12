@@ -14,4 +14,10 @@ class BacktrackingTest {
         Assertions.assertThat(Backtracking.readBinaryWatch(1))
                 .isEqualTo(List.of("0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"));
     }
+
+    @Test
+    void subsetXORSum() {
+        Assertions.assertThat(Backtracking.subsetXORSum(new int[]{5,1,6}))
+                .isEqualTo(28);
+    }
 }
