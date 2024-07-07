@@ -1,6 +1,7 @@
-package ru.list.surkovr.leetcode.easy;
+package ru.list.surkovr.exercises.leetcode.easy;
 
 import org.junit.jupiter.api.Test;
+import ru.list.surkovr.exercises.leetcode.easy.Part2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

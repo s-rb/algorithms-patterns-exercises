@@ -1,7 +1,8 @@
-package ru.list.surkovr.leetcode.medium;
+package ru.list.surkovr.exercises.leetcode.medium;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.list.surkovr.exercises.leetcode.medium.Part2;
 
 public class Part2Test {
 

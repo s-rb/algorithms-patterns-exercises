@@ -1,4 +1,4 @@
-package ru.list.surkovr.hackerrank;
+package ru.list.surkovr.exercises.hackerrank;
 
 import java.util.*;
 

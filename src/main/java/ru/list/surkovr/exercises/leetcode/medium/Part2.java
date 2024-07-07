@@ -1,4 +1,4 @@
-package ru.list.surkovr.leetcode.medium;
+package ru.list.surkovr.exercises.leetcode.medium;
 
 public class Part2 {
 

@@ -1,15 +1,16 @@
-package ru.list.surkovr.leetcode.medium;
+package ru.list.surkovr.exercises.leetcode.medium;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
+import ru.list.surkovr.exercises.leetcode.medium.Part1;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.util.Lists.list;
-import static ru.list.surkovr.leetcode.medium.Part1.CombinationIterator;
-import static ru.list.surkovr.leetcode.medium.Part1.CombinationIterator2;
+import static ru.list.surkovr.exercises.leetcode.medium.Part1.CombinationIterator;
+import static ru.list.surkovr.exercises.leetcode.medium.Part1.CombinationIterator2;
 
 
 public class Part1Test {

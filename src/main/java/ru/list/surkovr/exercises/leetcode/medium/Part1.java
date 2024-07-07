@@ -1,4 +1,4 @@
-package ru.list.surkovr.leetcode.medium;
+package ru.list.surkovr.exercises.leetcode.medium;
 
 import org.assertj.core.api.Assertions;
 import ru.list.surkovr.algorithms.Backtracking;

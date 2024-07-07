@@ -1,4 +1,4 @@
-package ru.list.surkovr.algorithms.greedy;
+package ru.list.surkovr.exercises.leetcode.greedy;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package ru.list.surkovr.leetcode.easy;
+package ru.list.surkovr.exercises.leetcode.easy;
 
 import java.util.HashMap;
 import java.util.Map;

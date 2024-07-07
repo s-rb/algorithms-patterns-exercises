@@ -1,4 +1,4 @@
-package ru.list.surkovr.leetcode.easy;
+package ru.list.surkovr.exercises.leetcode.easy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
