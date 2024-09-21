@@ -1,8 +1,5 @@
 package ru.list.surkovr.exercises.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -10,71 +7,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.lang.System.out;
 
 
 public class Week1 {
-    
-    private static void println(Object s) {
-        System.out.println(s);
-    }
-
-    public static void main(String[] args) {
-        println(Arrays.toString(sortEvenOdd(new int[]{4, 1, 2, 3})));
-
-        Result.plusMinus(List.of(1, 1, 0, -1, -1));
-        Result.plusMinus(List.of(-4, 3, -9, 0, 4, 1));
-        println("-----------------------------------------");
-        miniMaxSum(List.of(1, 2, 3, 4, 5));
-        miniMaxSum(List.of(1, 3, 5, 7, 9));
-        miniMaxSum(List.of(256741038, 623958417, 467905213, 714532089, 938071625));
-        println("-----------------------------------------");
-        println("12:00:00AM => " + timeConversion("12:00:00AM"));
-        println("12:00:00PM => " + timeConversion("12:00:00PM"));
-        println("12:01:00PM => " + timeConversion("12:01:00PM"));
-        println("12:01:00AM => " + timeConversion("12:01:00AM"));
-        println("07:05:45PM => " + timeConversion("07:05:45PM"));
-        println("06:40:03AM => " + timeConversion("06:40:03AM"));
-        println("12:45:54PM => " + timeConversion("12:45:54PM"));
-        println("-----------------------------------------");
-        println(breakingRecords(List.of(12, 24, 10, 24)));
-        println("-----------------------------------------");
-
-        println("-----------------------------------------");
-        println(divisibleSumPairs(6, 5, List.of(1, 2, 3, 4, 5, 6)));
-        println(divisibleSumPairs(6, 3, List.of(1, 3, 2, 6, 1, 2)));
-        println("-----------------------------------------");
-        println(matchingStrings(List.of("aba", "baba", "aba", "xzxb"), List.of("aba", "xzxb", "ab")));
-        println("-----------------------------------------");
-        flippingBits();
-        println("-----------------------------------------");
-        println(twoArrays(10, Arrays.asList(2, 1, 3), Arrays.asList(7, 8, 9)));
-        println(twoArrays(5, Arrays.asList(1, 2, 2, 1), Arrays.asList(3, 3, 3, 4)));
-        println("-----------------------------------------");
-
-        println("-----------------------------------------");
-        println(maximumPerimeterTriangle(Arrays.asList(
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000,
-                1000000000
-        )));
-        println("-----------------------------------------");
-        println(pickingNumbers(Arrays.asList(4, 6, 5, 3, 3, 1)));
-        println("-----------------------------------------");
-        separateNumbers("42949672954294967296429496729");
-        println("-----------------------------------------");
-        println(minimumNumber(7, "AUzs-nV"));
-        println("-----------------------------------------");
-
-        println("-----------------------------------------");
-        println(sansaXor(Arrays.asList(4, 5, 7, 5)));
-        println("-----------------------------------------");
-
-    }
 
     /**
      * Camel Case is a naming style common in many programming languages. In Java, method and variable names typically start with a lowercase letter, with all subsequent words starting with a capital letter (example: startThread). Names of classes follow the same pattern, except that they start with a capital letter (example: BlueCar).
@@ -154,7 +90,7 @@ public class Week1 {
             }
         }
         if (isMethod) sb.append("()");
-        println(sb.toString());
+        out.println(sb.toString());
     }
 
     //         String[] words = words.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])"); через регекс
@@ -168,7 +104,7 @@ public class Week1 {
                 sb.append(Character.toLowerCase(charAt));
             } else sb.append(charAt);
         }
-        println(sb.toString());
+        out.println(sb.toString());
     }
 
     /**
@@ -236,7 +172,7 @@ public class Week1 {
          * The function accepts INTEGER_ARRAY arr as parameter.
          */
 
-        public static void plusMinus(List<Integer> arr) {
+        public static String plusMinus(List<Integer> arr) {
             // Write your code here
             BigDecimal size = BigDecimal.valueOf(arr.size());
             int pos = 0;
@@ -249,32 +185,13 @@ public class Week1 {
                     pos++;
                 } else neg++;
             }
-            println(BigDecimal.valueOf(pos).divide(size, new MathContext(6, RoundingMode.HALF_UP)));
-            println(BigDecimal.valueOf(neg).divide(size, new MathContext(6, RoundingMode.HALF_UP)));
-            println(BigDecimal.valueOf(zer).divide(size, new MathContext(6, RoundingMode.HALF_UP)));
+
+            var a = BigDecimal.valueOf(pos).divide(size, new MathContext(6, RoundingMode.HALF_UP));
+            var b = BigDecimal.valueOf(neg).divide(size, new MathContext(6, RoundingMode.HALF_UP));
+            var c = BigDecimal.valueOf(zer).divide(size, new MathContext(6, RoundingMode.HALF_UP));
+            return a + "\n" + b + "\n" + c;
         }
 
-    }
-
-    public static class Solution {
-        public static void main(String[] args) throws IOException {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-            int n = Integer.parseInt(bufferedReader.readLine().trim());
-
-            String[] arrTemp = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
-            List<Integer> arr = new ArrayList<>();
-
-            for (int i = 0; i < n; i++) {
-                int arrItem = Integer.parseInt(arrTemp[i]);
-                arr.add(arrItem);
-            }
-
-            Result.plusMinus(arr);
-
-            bufferedReader.close();
-        }
     }
 
     ///////
@@ -341,7 +258,7 @@ public class Week1 {
      *
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
-    public static void miniMaxSum(List<Integer> arr) {
+    public static String miniMaxSum(List<Integer> arr) {
         // Write your code here
         long[] result = new long[5];
 
@@ -359,7 +276,7 @@ public class Week1 {
             if (num > max) max = num;
         }
 
-        println(min + " " + max);
+        return min + " " + max;
     }
 
     /**
@@ -591,10 +508,9 @@ public class Week1 {
         return result;
     }
 
-    public static long flippingBits() {
-        long n = 2147483647;
+    public static long flippingBits(int n) {
         long parseLong = Long.parseLong(Integer.toBinaryString((int) ~n), 2);
-        System.err.println(parseLong);
+        out.println(parseLong);
         return parseLong;
     }
 
@@ -625,7 +541,7 @@ public class Week1 {
         for (int i = 0; i < line1.length; i++) {
             sb.append(line1[i] ^ line2[i]);
         }
-        println(sb.toString());
+        out.println(sb.toString());
     }
 
     public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
@@ -688,10 +604,10 @@ public class Week1 {
             ed = ed + 1;
         }
         for(int i = 0; i < n; i++){
-            if(i > 0) System.out.print(" ");
-            System.out.print(a[i]);
+            if(i > 0) out.print(" ");
+            out.print(a[i]);
         }
-        System.out.println();
+        out.println();
     }
 
     public static int pickingNumbers(List<Integer> a) {
@@ -722,10 +638,9 @@ public class Week1 {
         return Math.max(maxNums, result);
     }
 
-    public static void separateNumbers(String s) {
+    public static String separateNumbers(String s) {
         if (s.length() <= 1) {
-            println("NO");
-            return;
+            return "NO";
         }
 
         LinkedList<Long> list = new LinkedList<>();
@@ -770,7 +685,7 @@ public class Week1 {
             length++;
         }
 
-        println(isBeautiful ? "YES " + list.getFirst() : "NO");
+        return isBeautiful ? ("YES " + list.getFirst()) : "NO";
     }
 
     public static int minimumNumber(int n, String password) {
@@ -840,7 +755,7 @@ public class Week1 {
                 })
                 .map(i -> i < arr.size() / 2 ? "-" : arr.get(i).get(1))
                 .collect(Collectors.toList());
-        println(String.join(" ", lst));
+        out.println(String.join(" ", lst));
     }
     public static void countSort2(List<List<String>> arr) {
         List<String>[] buckets = new List[100];
@@ -851,7 +766,7 @@ public class Week1 {
             buckets[Integer.parseInt(entry.get(0))]
                     .add((n++ < arr.size()/2) ? "-" : entry.get(1));
         for (List<String> bucket: buckets)
-            bucket.forEach(s-> System.out.print(s+" "));
+            bucket.forEach(s-> out.print(s+" "));
     }
     public static void countSort3(List<List<String>> arr) {
         for (int i = 0; i < arr.size() / 2; i++) arr.get(i).set(1, "-");
@@ -865,7 +780,7 @@ public class Week1 {
             arr.set(current, temp);
         }
         for (int i = 0; i < arr.size(); i++) {
-            System.out.print(arr.get(i).get(1) + " ");
+            out.print(arr.get(i).get(1) + " ");
         }
     }
     public static void countSort4(List<List<String>> arr) {
@@ -880,7 +795,7 @@ public class Week1 {
         }
         String res = lst.stream().sorted(((o1, o2) -> o1.getKey() - o2.getKey())).map(Map.Entry::getValue)
                 .collect(Collectors.joining(" "));
-        println(res);
+        out.println(res);
 
         for (int i = 0; i < arr.size() / 2; i++) arr.get(i).set(1, "-");
         for (int marker = 1; marker < arr.size(); marker++) {
@@ -893,7 +808,7 @@ public class Week1 {
             arr.set(current, temp);
         }
         for (int i = 0; i < arr.size(); i++) {
-            System.out.print(arr.get(i).get(1) + " ");
+            out.print(arr.get(i).get(1) + " ");
         }
     }
 
@@ -904,7 +819,7 @@ public class Week1 {
                 .map(Map.Entry::getValue)
                 .map(o -> new StringJoiner(" ").add(o))
                 .reduce(StringJoiner::merge)
-                .ifPresent(System.out::println);
+                .ifPresent(out::println);
 
         List<Map.Entry<Integer, String>> lst = new ArrayList<>();
         for (int i = 0; i < arr.size(); i++) {
@@ -917,22 +832,22 @@ public class Week1 {
         }
         String res = lst.stream().sorted(((o1, o2) -> o1.getKey() - o2.getKey())).map(Map.Entry::getValue)
                 .collect(Collectors.joining(" "));
-        println(res);
+        out.println(res);
     }
 
     public static int[] sortEvenOdd(int[] nums) {
         if (nums.length < 3) return nums;
         int half = nums.length;
-        Integer[] even = new Integer[half];
-        Integer[] odd = new Integer[half + (nums.length % 2 == 0 ? 0 : 1)];
+        List<Integer> even = new ArrayList<>();
+        List<Integer> odd = new ArrayList<>();
         for (int i = 0, evenIdx = 0, oddIdx = 0; i < nums.length; i++) {
-            if (i % 2 == 0) even[evenIdx++] = nums[i];
-            else odd[oddIdx++] = nums[i];
+            if (i % 2 == 0) even.add(nums[i]);
+            else odd.add(nums[i]);
         }
-        Arrays.sort(even);
-        Arrays.sort(odd, Comparator.reverseOrder());
+        even.sort(Comparator.naturalOrder());
+        odd.sort(Comparator.reverseOrder());
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = i % 2 == 0 ? even[i / 2] : odd[i / 2];
+            nums[i] = i % 2 == 0 ? even.get(i / 2) : odd.get(i / 2);
         }
         return nums;
     }
